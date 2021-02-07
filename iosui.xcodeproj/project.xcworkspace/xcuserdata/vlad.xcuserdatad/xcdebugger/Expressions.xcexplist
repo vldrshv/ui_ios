@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "static GroupsProvider.remove(at:):GroupsProvider.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "at.item">
+            </PersistentString>
+            <PersistentString
+               value = "groups">
+            </PersistentString>
+            <PersistentString
+               value = "getSubscribedGroups()">
+            </PersistentString>
+            <PersistentString
+               value = "getUnsubscribedGroups()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
