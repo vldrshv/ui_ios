@@ -7,18 +7,22 @@
 
 import UIKit
 
-class GroupsTableViewController: UITableViewController {
+class GroupsTableViewController: UITableViewController, DataChangeListener {
 
     @IBOutlet var tableGroups: UITableView!
+    
+    @IBAction func addGroups(_ sender: Any) {
+        let sb = UIStoryboard(name: "BottomTabs", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "AddGroupsController") as! GroupItemTableViewController
+        
+        vc.setDataChangeListener(listener: self)
+        
+        self.present(vc, animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableGroups.register(UINib(nibName: "GroupsTableViewCell", bundle: nil), forCellReuseIdentifier: "GroupsCell")
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,6 +39,10 @@ class GroupsTableViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
+    
+    func onDataChanged() {
+        tableGroups.reloadData()
+    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -42,7 +50,6 @@ class GroupsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(GroupsProvider.subscribedCount())
         return GroupsProvider.subscribedCount()
     }
 
@@ -51,28 +58,24 @@ class GroupsTableViewController: UITableViewController {
             fatalError("The dequeued cell is not an instance of MealTableViewCell.")
         }
         
-        let group = GroupsProvider.getGroup(at: indexPath)
-        cell.setGroup(group: group){
-            group.doAction()
-            
-            var title = "subscribe"
-            if group.isUserSubscribed() {
-                title = "unsubscribe"
-            }
-            
-//            cell.initButtonStyle(isActive: group.isUserSubscribed(), text: title)
-            
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-            tableView.reloadData()
-        }
-        
-//        cell.groupLabel.text = "\(indexPath.item)"
+        manageCell(cell, group: GroupsProvider.getGroupFromSubscribed(at: indexPath))
 
         return cell
+    }
+    
+    private func manageCell(_ cell: GroupsTableViewCell, group: IGroup) {
+        cell.setGroup(group: group) {
+            group.doAction()
+            self.tableView.reloadData()
+        }
     }
 
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableGroups.deselectRow(at: indexPath, animated: true)
     }
+}
+
+protocol DataChangeListener {
+    func onDataChanged()
 }

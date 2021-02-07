@@ -38,7 +38,11 @@ class GroupsProvider {
         return groups.filter{ $0.isUserSubscribed() }
     }
     
-    static func getGroup(at: IndexPath) -> IGroup {
+    static func getGroupFromSubscribed(at: IndexPath) -> IGroup {
         return getSubscribedGroups()[at.item]
+    }
+    
+    static func getGroupFromUnsubscribed(at: IndexPath) -> IGroup {
+        return getUnsubscribedGroups()[at.item]
     }
 }

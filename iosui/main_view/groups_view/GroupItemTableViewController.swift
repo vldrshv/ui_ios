@@ -9,14 +9,18 @@ import UIKit
 
 class GroupItemTableViewController: UITableViewController {
 
+    @IBOutlet var tableGroups: UITableView!
+    
+    private var dataListener: DataChangeListener? = nil
+    
+    deinit {
+        dataListener = nil
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        tableGroups.register(UINib(nibName: "GroupsTableViewCell", bundle: nil), forCellReuseIdentifier: "GroupsCell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -27,28 +31,53 @@ class GroupItemTableViewController: UITableViewController {
         
         UINavigationUtils.manageNavigationVisibility(navController: navController, appBarHidden: true, bottomBarHidden: true)
     }
+    
+    func setDataChangeListener(listener: DataChangeListener) {
+        dataListener = listener
+    }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return GroupsProvider.unsubscribedCount()
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "GroupsCell", for: indexPath) as? GroupsTableViewCell else {
+            fatalError("The dequeued cell is not an instance of MealTableViewCell.")
+        }
+        
+        manageCell(cell, group: GroupsProvider.getGroupFromUnsubscribed(at: indexPath))
 
         return cell
     }
-    */
+    
+    private func manageCell(_ cell: GroupsTableViewCell, group: IGroup) {
+        cell.setGroup(group: group) {
+            group.doAction()
+            let text = group.isUserSubscribed() ? "unsubscribe" : "subscribe"
+            cell.initButtonStyle(isActive: group.isUserSubscribed(), text: text)
+//            self.tableView.reloadData()
+        }
+    }
+
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableGroups.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        dataListener?.onDataChanged()
+    }
+    
 
     /*
     // Override to support conditional editing of the table view.

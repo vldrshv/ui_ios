@@ -132,10 +132,14 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="oq9-mg-YI2">
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="skl-yt-P2a"/>
+                            <barButtonItem systemItem="add" id="skl-yt-P2a">
+                                <connections>
+                                    <action selector="addGroups:" destination="xAN-Az-hmE" id="jxw-xH-V0P"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem systemItem="search" id="m3f-Sj-zmq">
                                 <connections>
-                                    <segue destination="eXe-hU-gdh" kind="presentation" modalPresentationStyle="automatic" id="g3T-EF-dDD"/>
+                                    <action selector="addGroups:" destination="nbr-ic-0gs" id="KbV-HW-1Ct"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -145,15 +149,16 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Q3-kn-qEI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="xAN-Az-hmE" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1301" y="-228"/>
         </scene>
         <!--Group Item Table View Controller-->
         <scene sceneID="XWp-Bv-xA7">
             <objects>
-                <tableViewController id="eXe-hU-gdh" customClass="GroupItemTableViewController" customModule="iosui" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="AddGroupsController" id="eXe-hU-gdh" customClass="GroupItemTableViewController" customModule="iosui" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Mzz-4X-YiM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -172,6 +177,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="qjk-Us-abl"/>
+                    <connections>
+                        <outlet property="tableGroups" destination="Mzz-4X-YiM" id="YJw-jZ-Fr1"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="liC-Pm-LZB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
