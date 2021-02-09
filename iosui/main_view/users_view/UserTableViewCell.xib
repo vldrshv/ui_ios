@@ -57,7 +57,7 @@
                 <outlet property="lastOnlineDateLabel" destination="bnD-gQ-JTI" id="VKo-hg-ynw"/>
                 <outlet property="nameLabel" destination="o2T-zt-wlN" id="HRu-a9-Gad"/>
             </connections>
-            <point key="canvasLocation" x="78.985507246376812" y="160.04464285714286"/>
+            <point key="canvasLocation" x="182" y="159"/>
         </tableViewCell>
     </objects>
 </document>

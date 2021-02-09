@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -60,7 +61,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y6K-oz-npj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2135" y="569"/>
+            <point key="canvasLocation" x="2925" y="569"/>
         </scene>
         <!--Friends-->
         <scene sceneID="H3l-bN-0We">
@@ -110,6 +111,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3uu-ue-0KH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1271" y="569"/>
+        </scene>
+        <!--Single Friend View Controller-->
+        <scene sceneID="tGn-SR-Gzv">
+            <objects>
+                <viewController storyboardIdentifier="SingleFriendViewController" id="G6I-xn-Bjf" customClass="SingleFriendViewController" customModule="iosui" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZfT-X8-cwB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yP4-iU-jAG" customClass="AvatarView" customModule="iosui" customModuleProvider="target">
+                                <rect key="frame" x="157" y="108" width="100" height="97"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="T5t-Np-VXC" customClass="LikeButton" customModule="iosui" customModuleProvider="target">
+                                <rect key="frame" x="157" y="269" width="100" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="hMg-Q4-LFd"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="yP4-iU-jAG" secondAttribute="trailing" constant="137" id="9EI-ak-wLz"/>
+                            <constraint firstItem="T5t-Np-VXC" firstAttribute="top" secondItem="yP4-iU-jAG" secondAttribute="bottom" constant="64" id="YZR-Yi-Ty1"/>
+                            <constraint firstItem="yP4-iU-jAG" firstAttribute="top" secondItem="ZfT-X8-cwB" secondAttribute="topMargin" constant="64" id="jub-e9-p2G"/>
+                            <constraint firstItem="yP4-iU-jAG" firstAttribute="leading" secondItem="ZfT-X8-cwB" secondAttribute="leadingMargin" constant="137" id="vkI-V0-IL6"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="byE-1X-VXj"/>
+                    <connections>
+                        <outlet property="avatarImage" destination="yP4-iU-jAG" id="TPo-ri-d8O"/>
+                        <outlet property="likeButton" destination="T5t-Np-VXC" id="boX-jQ-ixa"/>
+                        <outlet property="rootView" destination="ZfT-X8-cwB" id="x1w-sx-Njo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XMx-ox-m9F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2057.971014492754" y="568.52678571428567"/>
         </scene>
         <!--Groups Root-->
         <scene sceneID="9U8-OY-D46">

@@ -3,6 +3,9 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "SingleFriendViewController.viewDidLoad():SingleFriendViewController.swift">
+      </ContextState>
+      <ContextState
          contextName = "static GroupsProvider.remove(at:):GroupsProvider.swift">
          <PersistentStrings>
             <PersistentString

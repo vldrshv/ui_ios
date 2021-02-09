@@ -48,6 +48,10 @@ class UsersTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         usersTable.deselectRow(at: indexPath, animated: true)
+        
+        let sb = UIStoryboard(name: "BottomTabs", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "SingleFriendViewController")
+        self.present(vc, animated: true, completion: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
