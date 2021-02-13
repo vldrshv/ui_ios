@@ -10,8 +10,8 @@ import UIKit
 
 class UINavigationUtils {
     
-    static func manageNavigationVisibility(navController: UINavigationController, appBarHidden: Bool = true, bottomBarHidden: Bool = true) {
-        navController.navigationBar.isHidden = bottomBarHidden
+    static func manageNavigationVisibility(navController: UINavigationController, appBarHidden: Bool = true, navigationBarHidden: Bool = true) {
+        navController.navigationBar.isHidden = navigationBarHidden
         navController.tabBarController?.tabBar.isHidden = appBarHidden
     }
 }

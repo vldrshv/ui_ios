@@ -29,7 +29,7 @@ class GroupItemTableViewController: UITableViewController {
             return
         }
         
-        UINavigationUtils.manageNavigationVisibility(navController: navController, appBarHidden: true, bottomBarHidden: true)
+        UINavigationUtils.manageNavigationVisibility(navController: navController, appBarHidden: true, navigationBarHidden: false)
     }
     
     func setDataChangeListener(listener: DataChangeListener) {

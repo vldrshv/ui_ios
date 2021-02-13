@@ -34,7 +34,7 @@ class GroupsTableViewController: UITableViewController, DataChangeListener {
         guard let navController = self.navigationController else {
             return
         }
-        UINavigationUtils.manageNavigationVisibility(navController: navController, appBarHidden: false, bottomBarHidden: false)
+        UINavigationUtils.manageNavigationVisibility(navController: navController, appBarHidden: false, navigationBarHidden: false)
         
     }
     

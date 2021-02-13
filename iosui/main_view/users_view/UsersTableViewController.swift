@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UsersTableViewController: UITableViewController {
+class UsersTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var usersTable: UITableView!
     
@@ -21,18 +21,18 @@ class UsersTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         
         return UsersProvider.getSectionsCount()
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return UsersProvider.getUsersInSectionCount(section: section)
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserTableViewCell
         
         let user = UsersProvider.getAtSection(index: indexPath)
@@ -42,7 +42,7 @@ class UsersTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "LabledTableHeader") as! LabledTableHeader
         
         header.setText(text: UsersProvider.getSectionNameAt(section: section))
@@ -54,7 +54,7 @@ class UsersTableViewController: UITableViewController {
     
     // MARK: - On profile clicked
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         usersTable.deselectRow(at: indexPath, animated: true)
         
         let sb = UIStoryboard(name: "BottomTabs", bundle: nil)
@@ -69,7 +69,7 @@ class UsersTableViewController: UITableViewController {
             return
         }
         
-        UINavigationUtils.manageNavigationVisibility(navController: navContriller, appBarHidden: false, bottomBarHidden: true)
+        UINavigationUtils.manageNavigationVisibility(navController: navContriller, appBarHidden: false, navigationBarHidden: true)
     }
     
 }
