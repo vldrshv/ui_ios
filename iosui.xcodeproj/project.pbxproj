@@ -23,6 +23,8 @@
 		F5749DA425D0049000431A38 /* VkGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5749DA325D0049000431A38 /* VkGroup.swift */; };
 		F5749DA925D0071B00431A38 /* GroupsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5749DA825D0071B00431A38 /* GroupsProvider.swift */; };
 		F5749DAE25D01DC300431A38 /* ColorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5749DAD25D01DC300431A38 /* ColorUtils.swift */; };
+		F578D64025D8345000076191 /* LabledTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F578D63F25D8345000076191 /* LabledTableHeader.swift */; };
+		F578D64825D8348900076191 /* UILabledTableHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = F578D64725D8348900076191 /* UILabledTableHeader.xib */; };
 		F584DFCD25D1B94000FCC692 /* SingleFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F584DFCC25D1B94000FCC692 /* SingleFriendViewController.swift */; };
 		F593808025C5737300904E6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F593807F25C5737300904E6A /* AppDelegate.swift */; };
 		F593808425C5737300904E6A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F593808325C5737300904E6A /* ViewController.swift */; };
@@ -73,6 +75,8 @@
 		F5749DA325D0049000431A38 /* VkGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkGroup.swift; sourceTree = "<group>"; };
 		F5749DA825D0071B00431A38 /* GroupsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsProvider.swift; sourceTree = "<group>"; };
 		F5749DAD25D01DC300431A38 /* ColorUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorUtils.swift; sourceTree = "<group>"; };
+		F578D63F25D8345000076191 /* LabledTableHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabledTableHeader.swift; sourceTree = "<group>"; };
+		F578D64725D8348900076191 /* UILabledTableHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UILabledTableHeader.xib; sourceTree = "<group>"; };
 		F584DFCC25D1B94000FCC692 /* SingleFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleFriendViewController.swift; sourceTree = "<group>"; };
 		F593807C25C5737300904E6A /* iosui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosui.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F593807F25C5737300904E6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -200,6 +204,23 @@
 			path = utils;
 			sourceTree = "<group>";
 		};
+		F578D63D25D8342500076191 /* table_headers */ = {
+			isa = PBXGroup;
+			children = (
+				F578D63E25D8343200076191 /* labled */,
+			);
+			path = table_headers;
+			sourceTree = "<group>";
+		};
+		F578D63E25D8343200076191 /* labled */ = {
+			isa = PBXGroup;
+			children = (
+				F578D63F25D8345000076191 /* LabledTableHeader.swift */,
+				F578D64725D8348900076191 /* UILabledTableHeader.xib */,
+			);
+			path = labled;
+			sourceTree = "<group>";
+		};
 		F584DFCB25D1B8DF00FCC692 /* single_friend_view */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,6 +232,7 @@
 		F584DFD125D1BAC800FCC692 /* custom_views */ = {
 			isa = PBXGroup;
 			children = (
+				F578D63D25D8342500076191 /* table_headers */,
 				F5C38FE825D2B1560008440A /* action_button */,
 				F5C38FD025D271530008440A /* AvatarView.swift */,
 				F5C38FDD25D28E640008440A /* UIAvatarView.xib */,
@@ -389,6 +411,7 @@
 				F593808925C5737400904E6A /* Assets.xcassets in Resources */,
 				F552DC3B25CEEF2400F2633E /* GroupsTableViewCell.xib in Resources */,
 				F5C38FF225D2B1880008440A /* UIActionButton.xib in Resources */,
+				F578D64825D8348900076191 /* UILabledTableHeader.xib in Resources */,
 				F5C38FDE25D28E640008440A /* UIAvatarView.xib in Resources */,
 				F593808725C5737300904E6A /* Main.storyboard in Resources */,
 				F568B59125CF243C00DAA783 /* UserTableViewCell.xib in Resources */,
@@ -418,6 +441,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F55C6DCF25CDB39D007D608D /* AnimationUtil.swift in Sources */,
+				F578D64025D8345000076191 /* LabledTableHeader.swift in Sources */,
 				F55C6DDE25CDE64D007D608D /* GroupsTableViewController.swift in Sources */,
 				F593808425C5737300904E6A /* ViewController.swift in Sources */,
 				F593808025C5737300904E6A /* AppDelegate.swift in Sources */,

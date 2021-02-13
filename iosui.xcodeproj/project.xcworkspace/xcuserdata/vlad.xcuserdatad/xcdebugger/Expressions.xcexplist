@@ -6,6 +6,14 @@
          contextName = "SingleFriendViewController.viewDidLoad():SingleFriendViewController.swift">
       </ContextState>
       <ContextState
+         contextName = "UsersTableViewController.numberOfSections(in:):UsersTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "UsersProvider.getSectionsCount()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "static GroupsProvider.remove(at:):GroupsProvider.swift">
          <PersistentStrings>
             <PersistentString
@@ -19,6 +27,14 @@
             </PersistentString>
             <PersistentString
                value = "getUnsubscribedGroups()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "static UsersProvider.getSectionsCount():UsersProvider.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "usersSections">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

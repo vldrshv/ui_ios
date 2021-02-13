@@ -11,40 +11,48 @@ class UsersTableViewController: UITableViewController {
 
     @IBOutlet weak var usersTable: UITableView!
     
-    private var usersProvider = UsersProvider() // presenter or smth else with logic
-    private var users = [IUser]()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         
         usersTable.register(UINib(nibName: "UserTableViewCell", bundle: nil), forCellReuseIdentifier: "UserCell")
-        users.append(contentsOf: self.usersProvider.getUsers())
+        usersTable.register(UINib(nibName: "UILabledTableHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: "LabledTableHeader")
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        
+        return UsersProvider.getSectionsCount()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return users.count
+        return UsersProvider.getUsersInSectionCount(section: section)
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserTableViewCell
         
-        let user = users[indexPath.item]
+        let user = UsersProvider.getAtSection(index: indexPath)
         
         cell.setUser(user: user)
 
-        // Configure the cell...
-
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "LabledTableHeader") as! LabledTableHeader
+        
+        header.setText(text: UsersProvider.getSectionNameAt(section: section))
+        header.setTintColor(color: tableView.backgroundColor, alfa: 0.5)
+        header.setTextColor(color: UIColor.lightGray)
+        
+        return header
+    }
+    
+    // MARK: - On profile clicked
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         usersTable.deselectRow(at: indexPath, animated: true)
