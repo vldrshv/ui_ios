@@ -9,7 +9,10 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var rootContainer: UIView!
+    @IBOutlet weak var loginContainer: UIView!
     @IBOutlet weak var loginText: UITextField!
+    @IBOutlet weak var passwordContainer: UIView!
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var errorView: UIView!
@@ -17,8 +20,11 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+
+        addSpacing(to: [loginText, passwordText])
+        addShadow(to: [loginContainer, passwordContainer], radius: 10, opacity: 0.15)
         addShadow(to: [loginButton])
-        addCornerRadius(to: [loginText, passwordText, loginButton, errorView])
+        addCornerRadius(to: [loginContainer, loginText, passwordContainer, passwordText, loginButton, errorView])
         errorView.isHidden = true
     }
     
@@ -57,13 +63,29 @@ class ViewController: UIViewController {
         }
     }
     
-    private func addShadow(to: [UIView]) {
+    private func addSpacing(to: [UITextField]) {
+        
+        for textField in to {
+            let spaceView = UIView(frame:
+                CGRect(x: 0, y: 0, width: 16, height: textField.frame.height)
+            )
+            textField.leftView = spaceView
+            textField.leftViewMode = UITextField.ViewMode.always
+            
+//            textField.rightView = spaceView
+//            textField.rightViewMode = UITextField.ViewMode.always
+        }
+    }
+    
+    private func addShadow(to: [UIView], radius: CGFloat = 10, opacity: Float = 0.3) {
         for view in to {
+            
+            view.clipsToBounds = true
             view.layer.masksToBounds = false
             view.layer.shadowColor = UIColor.black.cgColor
-            view.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-            view.layer.shadowRadius = 15
-            view.layer.shadowOpacity = 0.5
+            view.layer.shadowOffset = .zero
+            view.layer.shadowRadius = radius
+            view.layer.shadowOpacity = opacity
             
             view.layer.shouldRasterize = true
             view.layer.rasterizationScale = UIScreen.main.scale
