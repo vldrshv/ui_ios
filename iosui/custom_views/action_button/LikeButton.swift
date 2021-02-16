@@ -15,11 +15,15 @@ class LikeButton: ActionButton, UserInteractionListener {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setInteractionListener(listener: self)
+        
+        initImage()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.setInteractionListener(listener: self)
+        
+        initImage()
     }
     
     func setLikes(isLiked: Bool, likes: Int) {
@@ -49,6 +53,15 @@ class LikeButton: ActionButton, UserInteractionListener {
         }
         
         self.actionLabelText = "\(likes)"
+    }
+    
+    private func initImage() {
+        if #available(iOS 13.0, *) {
+            imageSource = UIImage(systemName: "heart")
+            imageSourceActive = UIImage(systemName: "heart.fill")
+        } else {
+            // Fallback on earlier versions
+        }
     }
     /*
     // Only override draw() if you perform custom drawing.

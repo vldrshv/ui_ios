@@ -17,6 +17,7 @@ class ActionButton: UIView {
         didSet {
             self.actionImage.image = imageSource
             self.actionImage.tintColor = ColorUtils.black
+            resizeImage()
         }
     }
     
@@ -45,6 +46,23 @@ class ActionButton: UIView {
         self.loadView()
     }
     
+    func resizeImage() {
+        print("resize image")
+        guard let image = imageSource else { return }
+
+        let h = containerView.frame.height
+        let w = image.size.width
+        
+        if h > w {
+            let newWidth = w * (image.size.height / image.size.width)
+            actionImage.frame.size = CGSize(width: newWidth, height: h)
+        }
+        else{
+            let newWidth = w / (image.size.height / image.size.width)
+            actionImage.frame.size = CGSize(width: newWidth, height: h)
+        }
+    }
+    
     private func loadView() {
             // first: load the view hierarchy to get proper outlets
         let nib = UINib(nibName: "UIActionButton", bundle: .main)
@@ -52,7 +70,6 @@ class ActionButton: UIView {
 
         // next: append the container to our view
         self.addSubview(self.containerView)
-        self.backgroundColor = UIColor.yellow
         
         let w = self.frame.width
         let h = self.frame.height
@@ -60,13 +77,10 @@ class ActionButton: UIView {
         self.containerView.frame = CGRect(origin: self.containerView.center, size: CGSize(width: w, height: h))
         self.containerView.bounds = self.containerView.frame
         
-        print(actionImage.frame.width)
-        print(actionImage.frame.height)
-        
         addGestureRecognizer(tapGestureRecognizer)
     }
     
-    // -- MARK: Actions
+    // MARK: -- Actions
     
     lazy var tapGestureRecognizer: UITapGestureRecognizer = {
             let recognizer = UITapGestureRecognizer(target: self,

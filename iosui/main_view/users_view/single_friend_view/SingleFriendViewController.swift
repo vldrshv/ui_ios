@@ -23,12 +23,6 @@ class SingleFriendViewController: UIViewController {
         self.avatarImage.shadowOpacity = 0.5
         // Do any additional setup after loading the view.
         
-        if #available(iOS 13.0, *) {
-            likeButton.imageSource = UIImage(systemName: "heart")
-            likeButton.imageSourceActive = UIImage(systemName: "heart.fill")
-        } else {
-            // Fallback on earlier versions
-        }
         likeButton.setLikes(isLiked: false, likes: 0)
 
     }

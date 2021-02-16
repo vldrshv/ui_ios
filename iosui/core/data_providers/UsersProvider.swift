@@ -11,6 +11,7 @@ import Foundation
 
 class UsersProvider {
     private static var usersSections = [UserSection]()
+    private static var lowercasedFilterText: String = ""
     
     public static var users = [
         VkUser(name: "Vlad", lastOnlineDate: "21.12.2020", avatarPath: "avatar_1"),
@@ -72,18 +73,9 @@ class UsersProvider {
     
     private static func initSections() {
         for user in users {
-            let firstLetter = getFirstLetter(user: user)
+            if !user.hasName() { continue }
             
-            if firstLetter.isEmpty { continue }
-
-            for sectionIdx in usersSections.indices {
-                if usersSections[sectionIdx].sectionName == firstLetter {
-                    usersSections[sectionIdx].users.append(user)
-                    break
-                }
-            }
-            
-            usersSections.append(UserSection(name: firstLetter, users: [user]))
+            addWithFilter(element: user)
         }
         
         usersSections.sort(by: { $0.sectionName < $1.sectionName })
@@ -105,10 +97,6 @@ class UsersProvider {
     }
 }
 
-enum UserProviderError : Error {
-    case outOfIndexError
-}
-
 struct UserSection {
     let sectionName: String
     var users = [IUser]()
@@ -120,5 +108,51 @@ struct UserSection {
     init(name: String, users: [IUser]) {
         self.sectionName = name
         self.users = users
+    }
+}
+
+// ------------------
+// MARK: -- SEARCHING
+// ------------------
+
+extension UsersProvider {
+    public static func makeSearch(withText: String) {
+        if lowercasedFilterText == withText.lowercased() {
+            return
+        }
+        lowercasedFilterText = withText.lowercased()
+        usersSections = []
+        initSections()
+    }
+    
+    private static func addWithFilter(element: IUser) {
+        let toSection = findSectionFor(user: element)
+        guard let nonNullSection = toSection else {
+            if isAppropriate(text: element.getName()) {
+                usersSections.append(
+                    UserSection(name: getFirstLetter(user: element), users: [element])
+                )
+            }
+            return
+        }
+        
+        if isAppropriate(text: element.getName()) {
+            usersSections[nonNullSection].users.append(element)
+        }
+    }
+    
+    private static func findSectionFor(user: IUser) -> Int? {
+        let firstLetter = getFirstLetter(user: user)
+        for sectionIdx in usersSections.indices {
+            if usersSections[sectionIdx].sectionName == firstLetter {
+                return sectionIdx
+            }
+        }
+        
+        return nil
+    }
+    
+    private static func isAppropriate(text: String) -> Bool {
+        return lowercasedFilterText.isEmpty || text.lowercased().contains(lowercasedFilterText)
     }
 }

@@ -7,19 +7,45 @@
 
 import UIKit
 
-class UsersTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class UsersTableViewController: UIViewController {
 
+    @IBOutlet var containerView: UIView!
+    
     @IBOutlet weak var usersTable: UITableView!
+    private let searchController = UISearchController(searchResultsController: nil)
+    
+    @IBOutlet weak var searchView: UIStackView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        usersTable.alwaysBounceVertical = false
         usersTable.register(UINib(nibName: "UserTableViewCell", bundle: nil), forCellReuseIdentifier: "UserCell")
         usersTable.register(UINib(nibName: "UILabledTableHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: "LabledTableHeader")
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        guard let navController = self.navigationController else {
+            return
+        }
+        
+        UINavigationUtils.manageNavigationVisibility(navController: navController, appBarHidden: false, navigationBarHidden: true)
+        
+        containerView.safeAreaInsetsDidChange()
+        
+        initSearch()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        initSearchSize()
+    }
+}
     // MARK: - Table view data source
+    
+extension UsersTableViewController : UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -52,8 +78,15 @@ class UsersTableViewController: UIViewController, UITableViewDataSource, UITable
         return header
     }
     
-    // MARK: - On profile clicked
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+    }
     
+}
+
+extension UsersTableViewController : UITableViewDelegate {
+    // MARK: - On profile clicked
+        
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         usersTable.deselectRow(at: indexPath, animated: true)
         
@@ -61,15 +94,37 @@ class UsersTableViewController: UIViewController, UITableViewDataSource, UITable
         let vc = sb.instantiateViewController(withIdentifier: "SingleFriendViewController")
         self.present(vc, animated: true, completion: nil)
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        guard let navContriller = self.navigationController else {
+}
+
+
+extension UsersTableViewController : UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let searchText = searchController.searchBar.text else {
             return
         }
+        print(searchText)
         
-        UINavigationUtils.manageNavigationVisibility(navController: navContriller, appBarHidden: false, navigationBarHidden: true)
+        UsersProvider.makeSearch(withText: searchText)
+        usersTable.reloadData()
     }
     
+    private func initSearch() {
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchView.addSubview(searchController.searchBar)
+        
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        definesPresentationContext = true
+    }
+    
+    private func initSearchSize() {
+        let insets = containerView.safeAreaInsets
+        
+        let x = insets.left
+        let y = insets.top
+        let w = searchController.searchBar.frame.width
+        let h = searchController.searchBar.frame.height
+        
+        searchView.frame = CGRect(x: x, y: y, width: w, height: h)
+    }
 }

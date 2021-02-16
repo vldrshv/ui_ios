@@ -34,6 +34,10 @@ class VkUser : IUser {
     func isEmpty() -> Bool {
         return getName().isEmpty && getAvatarPath().isEmpty
     }
+    
+    func hasName() -> Bool {
+        return !getName().isEmpty
+    }
 }
 
 protocol IUser {
@@ -41,4 +45,6 @@ protocol IUser {
     func getLastOnlineDate() -> String
     func getAvatarPath() -> String
     func isEmpty() -> Bool
+    
+    func hasName() -> Bool
 }
