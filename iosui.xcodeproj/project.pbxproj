@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F5004C6725CE660000C79C50 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5004C6625CE660000C79C50 /* UsersTableViewController.swift */; };
 		F5004C7125CE66FA00C79C50 /* UINavigationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5004C7025CE66FA00C79C50 /* UINavigationUtils.swift */; };
+		F54CCDA025DD12F30017797F /* NewsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54CCD9F25DD12F30017797F /* NewsCollectionViewController.swift */; };
 		F552DC3A25CEEF2400F2633E /* GroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F552DC3825CEEF2400F2633E /* GroupsTableViewCell.swift */; };
 		F552DC3B25CEEF2400F2633E /* GroupsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F552DC3925CEEF2400F2633E /* GroupsTableViewCell.xib */; };
 		F55AF7BC25DBCDBA00F53218 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55AF7BB25DBCDBA00F53218 /* NewsViewController.swift */; };
@@ -32,6 +33,8 @@
 		F578D64025D8345000076191 /* LabledTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F578D63F25D8345000076191 /* LabledTableHeader.swift */; };
 		F578D64825D8348900076191 /* UILabledTableHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = F578D64725D8348900076191 /* UILabledTableHeader.xib */; };
 		F584DFCD25D1B94000FCC692 /* SingleFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F584DFCC25D1B94000FCC692 /* SingleFriendViewController.swift */; };
+		F58D10C825DD156F00782B9B /* NewsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58D10C725DD156F00782B9B /* NewsCollectionCell.swift */; };
+		F58D10CD25DD161800782B9B /* UINewsCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F58D10CC25DD161800782B9B /* UINewsCollectionCell.xib */; };
 		F593808025C5737300904E6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F593807F25C5737300904E6A /* AppDelegate.swift */; };
 		F593808425C5737300904E6A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F593808325C5737300904E6A /* ViewController.swift */; };
 		F593808725C5737300904E6A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F593808525C5737300904E6A /* Main.storyboard */; };
@@ -67,6 +70,7 @@
 /* Begin PBXFileReference section */
 		F5004C6625CE660000C79C50 /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		F5004C7025CE66FA00C79C50 /* UINavigationUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationUtils.swift; sourceTree = "<group>"; };
+		F54CCD9F25DD12F30017797F /* NewsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewController.swift; sourceTree = "<group>"; };
 		F552DC3825CEEF2400F2633E /* GroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewCell.swift; sourceTree = "<group>"; };
 		F552DC3925CEEF2400F2633E /* GroupsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupsTableViewCell.xib; sourceTree = "<group>"; };
 		F55AF7BB25DBCDBA00F53218 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
@@ -90,6 +94,8 @@
 		F578D63F25D8345000076191 /* LabledTableHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabledTableHeader.swift; sourceTree = "<group>"; };
 		F578D64725D8348900076191 /* UILabledTableHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UILabledTableHeader.xib; sourceTree = "<group>"; };
 		F584DFCC25D1B94000FCC692 /* SingleFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleFriendViewController.swift; sourceTree = "<group>"; };
+		F58D10C725DD156F00782B9B /* NewsCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionCell.swift; sourceTree = "<group>"; };
+		F58D10CC25DD161800782B9B /* UINewsCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UINewsCollectionCell.xib; sourceTree = "<group>"; };
 		F593807C25C5737300904E6A /* iosui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosui.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F593807F25C5737300904E6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F593808325C5737300904E6A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -162,6 +168,7 @@
 			children = (
 				F55AF7C025DBCE2700F53218 /* news_cells */,
 				F55AF7BB25DBCDBA00F53218 /* NewsViewController.swift */,
+				F54CCD9F25DD12F30017797F /* NewsCollectionViewController.swift */,
 			);
 			path = news_view;
 			sourceTree = "<group>";
@@ -171,6 +178,8 @@
 			children = (
 				F55AF7C125DBCE7F00F53218 /* PhotoTableViewCell.swift */,
 				F55AF7C225DBCE7F00F53218 /* PhotoTableViewCell.xib */,
+				F58D10C725DD156F00782B9B /* NewsCollectionCell.swift */,
+				F58D10CC25DD161800782B9B /* UINewsCollectionCell.xib */,
 			);
 			path = news_cells;
 			sourceTree = "<group>";
@@ -446,6 +455,7 @@
 				F55AF7C425DBCE7F00F53218 /* PhotoTableViewCell.xib in Resources */,
 				F552DC3B25CEEF2400F2633E /* GroupsTableViewCell.xib in Resources */,
 				F5C38FF225D2B1880008440A /* UIActionButton.xib in Resources */,
+				F58D10CD25DD161800782B9B /* UINewsCollectionCell.xib in Resources */,
 				F578D64825D8348900076191 /* UILabledTableHeader.xib in Resources */,
 				F5C38FDE25D28E640008440A /* UIAvatarView.xib in Resources */,
 				F593808725C5737300904E6A /* Main.storyboard in Resources */,
@@ -476,6 +486,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F55C6DCF25CDB39D007D608D /* AnimationUtil.swift in Sources */,
+				F54CCDA025DD12F30017797F /* NewsCollectionViewController.swift in Sources */,
 				F578D64025D8345000076191 /* LabledTableHeader.swift in Sources */,
 				F55AF7C325DBCE7F00F53218 /* PhotoTableViewCell.swift in Sources */,
 				F55AF7C925DC029E00F53218 /* ShareButton.swift in Sources */,
@@ -486,6 +497,7 @@
 				F5DC36A025D2D30800BBE3F5 /* UserInteractionListener.swift in Sources */,
 				F568B59025CF243C00DAA783 /* UserTableViewCell.swift in Sources */,
 				F5C38FEA25D2B1780008440A /* ActionButton.swift in Sources */,
+				F58D10C825DD156F00782B9B /* NewsCollectionCell.swift in Sources */,
 				F55AF7CE25DC043500F53218 /* CommentButton.swift in Sources */,
 				F552DC3A25CEEF2400F2633E /* GroupsTableViewCell.swift in Sources */,
 				F5749DAE25D01DC300431A38 /* ColorUtils.swift in Sources */,

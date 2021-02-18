@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Zvx-SK-U3P">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UPY-kx-6TC">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -271,14 +271,13 @@
         <!--Root View Controller-->
         <scene sceneID="2SO-zm-2bu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NS8-cf-sfx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tableViewController id="0wa-Ym-Sf6" customClass="NewsTableViewController" customModule="iosui" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hSm-fy-CEt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <inset key="separatorInset" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="4Du-BE-hWc">
                                 <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
@@ -299,6 +298,7 @@
                         <outlet property="newsTable" destination="hSm-fy-CEt" id="Hh0-G0-fLo"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NS8-cf-sfx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1274" y="1225"/>
         </scene>
@@ -312,12 +312,64 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="0wa-Ym-Sf6" kind="relationship" relationship="rootViewController" id="qgq-Yv-Bfw"/>
+                        <segue destination="UPY-kx-6TC" kind="relationship" relationship="rootViewController" id="mQM-fx-RCa"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="af9-V9-qNn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="412" y="1225"/>
+        </scene>
+        <!--News Collection View Controller-->
+        <scene sceneID="cq1-rD-pxr">
+            <objects>
+                <viewController id="UPY-kx-6TC" customClass="NewsCollectionViewController" customModule="iosui" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eSd-Cc-NbW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZAF-YR-8np">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JMF-LT-mCt">
+                                    <size key="itemSize" width="0.0" height="0.0"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="i70-4v-BqY">
+                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="QN2-Av-InT">
+                                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="UPY-kx-6TC" id="A5c-0i-A4M"/>
+                                    <outlet property="delegate" destination="UPY-kx-6TC" id="jwT-20-yU4"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="eOY-2s-PQY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="eOY-2s-PQY" firstAttribute="trailing" secondItem="ZAF-YR-8np" secondAttribute="trailing" id="J2g-zm-IXk"/>
+                            <constraint firstItem="eOY-2s-PQY" firstAttribute="bottom" secondItem="ZAF-YR-8np" secondAttribute="bottom" id="YSK-aV-YJw"/>
+                            <constraint firstItem="ZAF-YR-8np" firstAttribute="top" secondItem="eOY-2s-PQY" secondAttribute="top" id="bM3-Eg-KUg"/>
+                            <constraint firstItem="ZAF-YR-8np" firstAttribute="leading" secondItem="eOY-2s-PQY" secondAttribute="leading" id="woG-Ei-Kyh"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="rXj-0O-TVK"/>
+                    <connections>
+                        <outlet property="newsCollection" destination="ZAF-YR-8np" id="jwg-NO-6ul"/>
+                        <outlet property="newsCollectionFlow" destination="JMF-LT-mCt" id="pg3-CE-s45"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iHU-QQ-CBP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1233" y="1923"/>
         </scene>
     </scenes>
     <resources>

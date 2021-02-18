@@ -24,4 +24,12 @@ class NewsProvider {
         return min(lables.count, likes.count, isLiked.count, imgPath.count)
     }
     
+    static func getTitleAt(index: IndexPath) -> String {
+        return lables[index.item]
+    }
+    
+    static func getImagePathAt(index: IndexPath) -> String {
+        return imgPath[index.item]
+    }
+    
 }
