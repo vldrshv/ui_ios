@@ -40,7 +40,7 @@ class NewsCollectionCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.backgroundColor = .green
+//        self.backgroundColor = .green
 
         
         contentView.translatesAutoresizingMaskIntoConstraints = false
@@ -51,6 +51,8 @@ class NewsCollectionCell: UICollectionViewCell {
             contentView.topAnchor.constraint(equalTo: topAnchor),
             contentView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
+        
+        addShadows()
 
     }
     
@@ -59,7 +61,9 @@ class NewsCollectionCell: UICollectionViewCell {
         newsImage.image = UIImage(named: imagePath)
         
         newsImage.frame = updateImageSizes(newsImage.image)
-//        imageHeightConstraint.constant = newsImage.frame.height
+        
+        imageHeightConstraint.constant = newsImage.frame.height
+        newsImage.setNeedsUpdateConstraints()
         newsImage.backgroundColor = .yellow
     }
     
@@ -70,14 +74,13 @@ class NewsCollectionCell: UICollectionViewCell {
     
     private func updateImageSizes(_ image: UIImage?) -> CGRect {
         guard let image = image else { return bounds }
-//        guard contentMode == .scaleAspectFit else { return bounds }
         guard image.size.width > 0 && image.size.height > 0 else { return bounds }
-
-        let scale = image.size.width / image.size.height
+        
+        let scale = image.size.width / imageWidthConstraint.constant
         
         let size = CGSize(
-            width: newsImage.frame.size.width,
-            height: newsImage.frame.size.width * scale
+            width: imageWidthConstraint.constant,
+            height: image.size.height / scale
         )
         
         let x = (bounds.width - size.width) / 2.0
@@ -86,4 +89,17 @@ class NewsCollectionCell: UICollectionViewCell {
         return CGRect(x: x, y: y, width: size.width, height: size.height)
     }
     
+    
+    private func addShadows() {
+        containerView.clipsToBounds = false
+        var layer = containerView.layer
+        layer.masksToBounds = false
+        layer.shadowColor = UIColor.gray.cgColor
+        layer.shadowOffset = .zero
+        layer.shadowOpacity = 0.5
+        layer.cornerRadius = 12
+        
+        newsImage.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        newsImage.layer.cornerRadius = 12
+    }
 }

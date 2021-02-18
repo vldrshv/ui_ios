@@ -74,8 +74,9 @@ class ActionButton: UIView {
         let w = self.frame.width
         let h = self.frame.height
         
-        self.containerView.frame = CGRect(origin: self.containerView.center, size: CGSize(width: w, height: h))
+        self.containerView.frame = CGRect(origin: self.center, size: CGSize(width: w, height: h))
         self.containerView.bounds = self.containerView.frame
+        self.containerView.setNeedsLayout()
         
         addGestureRecognizer(tapGestureRecognizer)
     }
