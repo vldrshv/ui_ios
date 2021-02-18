@@ -32,4 +32,12 @@ class NewsProvider {
         return imgPath[index.item]
     }
     
+    static func getIsLiked(index: IndexPath) -> Bool {
+        return isLiked[index.item]
+    }
+    
+    static func getLikesCount(index: IndexPath) -> Int {
+        return likes[index.item]
+    }
+    
 }

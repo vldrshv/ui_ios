@@ -9,34 +9,34 @@ import UIKit
 
 class NewsCollectionCell: UICollectionViewCell {
     
-    
+//  MARK: -- VIEWS
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var newsLabel: UILabel!
     @IBOutlet private weak var newsImage: UIImageView!
+    @IBOutlet private weak var likeButton: LikeButton!
     
+//  MARK: -- CONSTRAINTS
     @IBOutlet private var maxWidthConstraint: NSLayoutConstraint! {
          didSet {
              maxWidthConstraint.isActive = false
          }
      }
-
-     private var maxWidth: CGFloat? = nil {
-         didSet {
-             guard let maxWidth = maxWidth else {
-                 return
-             }
-             maxWidthConstraint.isActive = true
-             maxWidthConstraint.constant = maxWidth - 16
-            
-            textWidthConstraint.constant = maxWidthConstraint.constant - 32
-            imageWidthConstraint.constant = maxWidthConstraint.constant
-         }
-     }
-
     @IBOutlet private weak var textWidthConstraint: NSLayoutConstraint!
-    
     @IBOutlet private weak var imageWidthConstraint: NSLayoutConstraint!
     @IBOutlet private weak var imageHeightConstraint: NSLayoutConstraint!
+    
+    private var maxWidth: CGFloat? = nil {
+        didSet {
+            guard let maxWidth = maxWidth else {
+                return
+            }
+            maxWidthConstraint.isActive = true
+            maxWidthConstraint.constant = maxWidth - 16
+           
+           textWidthConstraint.constant = maxWidthConstraint.constant - 32
+           imageWidthConstraint.constant = maxWidthConstraint.constant
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -71,6 +71,9 @@ class NewsCollectionCell: UICollectionViewCell {
         self.maxWidth = width
     }
     
+    func setLikes(isLiked: Bool, likesCount: Int) {
+        likeButton.setLikes(isLiked: isLiked, likes: likesCount)
+    }
     
     private func updateImageSizes(_ image: UIImage?) -> CGRect {
         guard let image = image else { return bounds }

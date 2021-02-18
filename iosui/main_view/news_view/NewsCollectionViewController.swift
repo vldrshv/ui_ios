@@ -42,11 +42,13 @@ extension NewsCollectionViewController : UICollectionViewDataSource {
         print("cell for: index = \(indexPath), cell size: \(cell.frame.size)")
 
         
+        let title = NewsProvider.getTitleAt(index: indexPath)
+        let imagePath = NewsProvider.getImagePathAt(index: indexPath)
+        let isLiked = NewsProvider.getIsLiked(index: indexPath)
+        let likesCount = NewsProvider.getLikesCount(index: indexPath)
         cell.setWidth(newsCollection.bounds.width)
-        cell.setNews(
-            title: NewsProvider.getTitleAt(index: indexPath),
-            imagePath: NewsProvider.getImagePathAt(index: indexPath)
-        )
+        cell.setNews(title: title, imagePath: imagePath)
+        cell.setLikes(isLiked: isLiked, likesCount: likesCount)
         
         return cell
     }

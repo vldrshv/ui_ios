@@ -86,6 +86,7 @@
                 <outlet property="containerView" destination="1zF-Mk-fAz" id="dTA-j5-YPD"/>
                 <outlet property="imageHeightConstraint" destination="nQ6-e5-B4L" id="eBh-aK-zOf"/>
                 <outlet property="imageWidthConstraint" destination="NeI-rH-rry" id="NfK-AW-UTP"/>
+                <outlet property="likeButton" destination="IW8-nA-aKP" id="E3w-8G-O7g"/>
                 <outlet property="maxWidthConstraint" destination="L2Y-mz-kQ4" id="eYl-fd-gMY"/>
                 <outlet property="newsImage" destination="dKW-bN-pAG" id="QmI-pk-yMc"/>
                 <outlet property="newsLabel" destination="bF8-vJ-K8O" id="U5q-hE-8h0"/>
