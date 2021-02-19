@@ -3,69 +3,6 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "NewsCollectionCell.updateImageSizes(_:):NewsCollectionCell.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "newsImage.frame">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "PhotoTableViewCell.setImagePath(path:):PhotoTableViewCell.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "newsImage.bounds">
-            </PersistentString>
-            <PersistentString
-               value = "newsImage.frame">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "static UsersProvider.initSections():UsersProvider.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "usersSections">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "static UsersProvider.addWithFilter(element:):UsersProvider.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "filterText">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "ActionButton.resizeImage():ActionButton.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "image.size.width">
-            </PersistentString>
-            <PersistentString
-               value = "image.size.height">
-            </PersistentString>
-            <PersistentString
-               value = "actionLabel.frame.width">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "SingleFriendViewController.viewDidLoad():SingleFriendViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "PhotoTableViewCell.resizeImage(_:):PhotoTableViewCell.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "image.size">
-            </PersistentString>
-            <PersistentString
-               value = "newsImage.frame">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "static GroupsProvider.remove(at:):GroupsProvider.swift">
          <PersistentStrings>
             <PersistentString
@@ -83,6 +20,17 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "PhotoTableViewCell.resizeImage(_:):PhotoTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "image.size">
+            </PersistentString>
+            <PersistentString
+               value = "newsImage.frame">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "UsersTableViewController.numberOfSections(in:):UsersTableViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -91,10 +39,92 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "PhotoTableViewCell.setImagePath(path:):PhotoTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "newsImage.bounds">
+            </PersistentString>
+            <PersistentString
+               value = "newsImage.frame">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "LoaderView.setupViews(_:):LoaderView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "w">
+            </PersistentString>
+            <PersistentString
+               value = "h">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "SingleFriendViewController.viewDidLoad():SingleFriendViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "static UsersProvider.addWithFilter(element:):UsersProvider.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "filterText">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "static UsersProvider.getSectionsCount():UsersProvider.swift">
          <PersistentStrings>
             <PersistentString
                value = "usersSections">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "NewsCollectionCell.updateImageSizes(_:):NewsCollectionCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "newsImage.frame">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "LoaderView.setLoaderItemsCount(count:shapes:):LoaderView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "requireShapes.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "static UsersProvider.initSections():UsersProvider.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "usersSections">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "LoaderItem.setShape(shape:):LoaderItem.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "itemView.frame.width">
+            </PersistentString>
+            <PersistentString
+               value = "itemView.frame">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ActionButton.resizeImage():ActionButton.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "image.size.width">
+            </PersistentString>
+            <PersistentString
+               value = "image.size.height">
+            </PersistentString>
+            <PersistentString
+               value = "actionLabel.frame.width">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

@@ -62,6 +62,7 @@ class AvatarView: UIView {
 
         // next: append the container to our view
         self.addSubview(self.containerView)
+        addGestureRecognizer(tapGestureRecognizer)
     }
     
     private func makeRounded() {
@@ -82,5 +83,20 @@ class AvatarView: UIView {
         avatarImage.layer.cornerRadius = size / 2
         avatarImage.clipsToBounds = true
     
+    }
+
+    // MARK: -- Actions
+
+    lazy var tapGestureRecognizer: UITapGestureRecognizer = {
+            let recognizer = UITapGestureRecognizer(target: self,
+                                                    action: #selector(onTap))
+            recognizer.numberOfTapsRequired = 1    // Количество нажатий, необходимое для распознавания
+            recognizer.numberOfTouchesRequired = 1 // Количество пальцев, которые должны коснуться экрана для распознавания
+            return recognizer
+        }()
+
+
+    @objc func onTap() {
+        AnimationUtil.bouncing(unit: AnimationUnit(item: self, duration: 0.5, nextItem: nil, animType: .bounce))
     }
 }

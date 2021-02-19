@@ -12,6 +12,13 @@
 		F54CCDA025DD12F30017797F /* NewsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54CCD9F25DD12F30017797F /* NewsCollectionViewController.swift */; };
 		F552DC3A25CEEF2400F2633E /* GroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F552DC3825CEEF2400F2633E /* GroupsTableViewCell.swift */; };
 		F552DC3B25CEEF2400F2633E /* GroupsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F552DC3925CEEF2400F2633E /* GroupsTableViewCell.xib */; };
+		F554447425DFEDEC00AF3DE8 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F554447325DFEDEC00AF3DE8 /* LoaderView.swift */; };
+		F554447925DFEDFB00AF3DE8 /* UILoaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F554447825DFEDFB00AF3DE8 /* UILoaderView.xib */; };
+		F554447E25DFF2CD00AF3DE8 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F554447D25DFF2CD00AF3DE8 /* BaseView.swift */; };
+		F554448325DFFEDE00AF3DE8 /* UILoaderItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = F554448225DFFEDE00AF3DE8 /* UILoaderItem.xib */; };
+		F554448825DFFEF900AF3DE8 /* LoaderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F554448725DFFEF900AF3DE8 /* LoaderItem.swift */; };
+		F554448D25E01DB300AF3DE8 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = F554448C25E01DB300AF3DE8 /* Shape.swift */; };
+		F554449225E022EE00AF3DE8 /* AnimationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F554449125E022EE00AF3DE8 /* AnimationType.swift */; };
 		F55AF7BC25DBCDBA00F53218 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55AF7BB25DBCDBA00F53218 /* NewsViewController.swift */; };
 		F55AF7C325DBCE7F00F53218 /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55AF7C125DBCE7F00F53218 /* PhotoTableViewCell.swift */; };
 		F55AF7C425DBCE7F00F53218 /* PhotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F55AF7C225DBCE7F00F53218 /* PhotoTableViewCell.xib */; };
@@ -73,6 +80,13 @@
 		F54CCD9F25DD12F30017797F /* NewsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewController.swift; sourceTree = "<group>"; };
 		F552DC3825CEEF2400F2633E /* GroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewCell.swift; sourceTree = "<group>"; };
 		F552DC3925CEEF2400F2633E /* GroupsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupsTableViewCell.xib; sourceTree = "<group>"; };
+		F554447325DFEDEC00AF3DE8 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
+		F554447825DFEDFB00AF3DE8 /* UILoaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UILoaderView.xib; sourceTree = "<group>"; };
+		F554447D25DFF2CD00AF3DE8 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		F554448225DFFEDE00AF3DE8 /* UILoaderItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UILoaderItem.xib; sourceTree = "<group>"; };
+		F554448725DFFEF900AF3DE8 /* LoaderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderItem.swift; sourceTree = "<group>"; };
+		F554448C25E01DB300AF3DE8 /* Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
+		F554449125E022EE00AF3DE8 /* AnimationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationType.swift; sourceTree = "<group>"; };
 		F55AF7BB25DBCDBA00F53218 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		F55AF7C125DBCE7F00F53218 /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
 		F55AF7C225DBCE7F00F53218 /* PhotoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoTableViewCell.xib; sourceTree = "<group>"; };
@@ -163,6 +177,37 @@
 			path = login;
 			sourceTree = "<group>";
 		};
+		F554447025DFED8E00AF3DE8 /* root */ = {
+			isa = PBXGroup;
+			children = (
+				F5DC369F25D2D30800BBE3F5 /* UserInteractionListener.swift */,
+				F5C38FE925D2B1780008440A /* ActionButton.swift */,
+				F5C38FF125D2B1880008440A /* UIActionButton.xib */,
+			);
+			path = root;
+			sourceTree = "<group>";
+		};
+		F554447125DFEDB000AF3DE8 /* avatar */ = {
+			isa = PBXGroup;
+			children = (
+				F5C38FD025D271530008440A /* AvatarView.swift */,
+				F5C38FDD25D28E640008440A /* UIAvatarView.xib */,
+			);
+			path = avatar;
+			sourceTree = "<group>";
+		};
+		F554447225DFEDC200AF3DE8 /* loader */ = {
+			isa = PBXGroup;
+			children = (
+				F554447325DFEDEC00AF3DE8 /* LoaderView.swift */,
+				F554447825DFEDFB00AF3DE8 /* UILoaderView.xib */,
+				F554448225DFFEDE00AF3DE8 /* UILoaderItem.xib */,
+				F554448725DFFEF900AF3DE8 /* LoaderItem.swift */,
+				F554448C25E01DB300AF3DE8 /* Shape.swift */,
+			);
+			path = loader;
+			sourceTree = "<group>";
+		};
 		F55AF7BA25DBCD6C00F53218 /* news_view */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,6 +286,7 @@
 				F55C6DCE25CDB39D007D608D /* AnimationUtil.swift */,
 				F5004C7025CE66FA00C79C50 /* UINavigationUtils.swift */,
 				F5749DAD25D01DC300431A38 /* ColorUtils.swift */,
+				F554449125E022EE00AF3DE8 /* AnimationType.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -273,10 +319,11 @@
 		F584DFD125D1BAC800FCC692 /* custom_views */ = {
 			isa = PBXGroup;
 			children = (
+				F554447225DFEDC200AF3DE8 /* loader */,
+				F554447125DFEDB000AF3DE8 /* avatar */,
 				F578D63D25D8342500076191 /* table_headers */,
 				F5C38FE825D2B1560008440A /* action_button */,
-				F5C38FD025D271530008440A /* AvatarView.swift */,
-				F5C38FDD25D28E640008440A /* UIAvatarView.xib */,
+				F554447D25DFF2CD00AF3DE8 /* BaseView.swift */,
 			);
 			path = custom_views;
 			sourceTree = "<group>";
@@ -337,10 +384,8 @@
 		F5C38FE825D2B1560008440A /* action_button */ = {
 			isa = PBXGroup;
 			children = (
-				F5C38FE925D2B1780008440A /* ActionButton.swift */,
-				F5C38FF125D2B1880008440A /* UIActionButton.xib */,
+				F554447025DFED8E00AF3DE8 /* root */,
 				F5DC369A25D2D27800BBE3F5 /* LikeButton.swift */,
-				F5DC369F25D2D30800BBE3F5 /* UserInteractionListener.swift */,
 				F55AF7C825DC029E00F53218 /* ShareButton.swift */,
 				F55AF7CD25DC043500F53218 /* CommentButton.swift */,
 			);
@@ -451,8 +496,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F593808C25C5737400904E6A /* LaunchScreen.storyboard in Resources */,
+				F554447925DFEDFB00AF3DE8 /* UILoaderView.xib in Resources */,
 				F593808925C5737400904E6A /* Assets.xcassets in Resources */,
 				F55AF7C425DBCE7F00F53218 /* PhotoTableViewCell.xib in Resources */,
+				F554448325DFFEDE00AF3DE8 /* UILoaderItem.xib in Resources */,
 				F552DC3B25CEEF2400F2633E /* GroupsTableViewCell.xib in Resources */,
 				F5C38FF225D2B1880008440A /* UIActionButton.xib in Resources */,
 				F58D10CD25DD161800782B9B /* UINewsCollectionCell.xib in Resources */,
@@ -489,6 +536,7 @@
 				F54CCDA025DD12F30017797F /* NewsCollectionViewController.swift in Sources */,
 				F578D64025D8345000076191 /* LabledTableHeader.swift in Sources */,
 				F55AF7C325DBCE7F00F53218 /* PhotoTableViewCell.swift in Sources */,
+				F554447425DFEDEC00AF3DE8 /* LoaderView.swift in Sources */,
 				F55AF7C925DC029E00F53218 /* ShareButton.swift in Sources */,
 				F55C6DDE25CDE64D007D608D /* GroupsTableViewController.swift in Sources */,
 				F593808425C5737300904E6A /* ViewController.swift in Sources */,
@@ -498,6 +546,7 @@
 				F568B59025CF243C00DAA783 /* UserTableViewCell.swift in Sources */,
 				F5C38FEA25D2B1780008440A /* ActionButton.swift in Sources */,
 				F58D10C825DD156F00782B9B /* NewsCollectionCell.swift in Sources */,
+				F554449225E022EE00AF3DE8 /* AnimationType.swift in Sources */,
 				F55AF7CE25DC043500F53218 /* CommentButton.swift in Sources */,
 				F552DC3A25CEEF2400F2633E /* GroupsTableViewCell.swift in Sources */,
 				F5749DAE25D01DC300431A38 /* ColorUtils.swift in Sources */,
@@ -505,12 +554,15 @@
 				F584DFCD25D1B94000FCC692 /* SingleFriendViewController.swift in Sources */,
 				F568B57825CF1E7000DAA783 /* VkUser.swift in Sources */,
 				F5004C7125CE66FA00C79C50 /* UINavigationUtils.swift in Sources */,
+				F554448825DFFEF900AF3DE8 /* LoaderItem.swift in Sources */,
 				F55AF7BC25DBCDBA00F53218 /* NewsViewController.swift in Sources */,
+				F554448D25E01DB300AF3DE8 /* Shape.swift in Sources */,
 				F5749DA425D0049000431A38 /* VkGroup.swift in Sources */,
 				F5749DA925D0071B00431A38 /* GroupsProvider.swift in Sources */,
 				F5004C6725CE660000C79C50 /* UsersTableViewController.swift in Sources */,
 				F55C6DD925CDB876007D608D /* BottomTabsViewController.swift in Sources */,
 				F5C38FD125D271530008440A /* AvatarView.swift in Sources */,
+				F554447E25DFF2CD00AF3DE8 /* BaseView.swift in Sources */,
 				F568B58125CF219300DAA783 /* UsersProvider.swift in Sources */,
 				F55AF7D325DC04F300F53218 /* NewsProvider.swift in Sources */,
 			);
