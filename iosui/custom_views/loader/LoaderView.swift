@@ -95,7 +95,5 @@ class LoaderView: BaseView {
         loaderContainer.insertArrangedSubview(container, at: index)
         container.layoutIfNeeded()
         container.setShape(shape: shape)
-        
-        print("add view to container at: \(index)")
     }
 }

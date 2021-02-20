@@ -31,14 +31,6 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "UsersTableViewController.numberOfSections(in:):UsersTableViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "UsersProvider.getSectionsCount()">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "PhotoTableViewCell.setImagePath(path:):PhotoTableViewCell.swift">
          <PersistentStrings>
             <PersistentString
@@ -46,6 +38,17 @@
             </PersistentString>
             <PersistentString
                value = "newsImage.frame">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AvatarView.makeRounded():AvatarView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.frame">
+            </PersistentString>
+            <PersistentString
+               value = "containerView.frame">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -68,6 +71,14 @@
          <PersistentStrings>
             <PersistentString
                value = "filterText">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "UsersTableViewController.numberOfSections(in:):UsersTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "UsersProvider.getSectionsCount()">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

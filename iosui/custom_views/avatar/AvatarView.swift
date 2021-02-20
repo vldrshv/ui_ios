@@ -7,96 +7,92 @@
 
 import UIKit
 
-@IBDesignable
-class AvatarView: UIView {
-
-    @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var avatarImage: UIImageView!
+class AvatarView: BaseView {
     
-    @IBInspectable var source: UIImage? = nil {
+    private let nibName = "UIAvatarView"
+
+    @IBOutlet private weak var containerView: UIView! {
         didSet {
-            self.avatarImage.image = source
+            super.loadSubview(container: containerView)
+        }
+    }
+    @IBOutlet private weak var avatarImage: UIImageView!
+    
+    @IBOutlet weak var heightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var widthConstraint: NSLayoutConstraint!
+    
+    private var constraintsSize: CGFloat = 0 {
+        didSet {
+            widthConstraint.constant = constraintsSize
+            widthConstraint.isActive = true
+            heightConstraint.constant = constraintsSize
+            heightConstraint.isActive = true
         }
     }
     
-    @IBInspectable var isRounded: Bool = false {
+    var isRounded: Bool = false {
         didSet {
             makeRounded()
         }
     }
     
-    @IBInspectable var shadowRadius: CGFloat = 0 {
+    var shadowRadius: CGFloat = 0 {
         didSet {
             containerView.layer.shadowRadius = shadowRadius
         }
     }
     
-    @IBInspectable var shadowOpacity: Float = 0 {
+    var shadowOpacity: Float = 0 {
         didSet {
             containerView.layer.shadowOpacity = shadowOpacity
         }
     }
     
-    @IBInspectable var shadowColor: UIColor? = nil {
+    var shadowColor: UIColor? = nil {
         didSet {
             containerView.layer.shadowColor = shadowColor?.cgColor
         }
     }
     
+    func setSize(_ size: CGFloat) {
+        self.constraintsSize = size
+    }
     
+    func setImage(path: String) {
+        if path == "" { return }
+        self.avatarImage.image = UIImage(named: path)
+        
+        containerView.setNeedsDisplay()
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.loadView()
+        super.loadView(nibName: nibName)
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        self.loadView()
+        super.loadView(nibName: nibName)
     }
     
-    private func loadView() {
-            // first: load the view hierarchy to get proper outlets
-        let nib = UINib(nibName: "UIAvatarView", bundle: .main)
-        nib.instantiate(withOwner: self, options: nil)
-
-        // next: append the container to our view
-        self.addSubview(self.containerView)
-        addGestureRecognizer(tapGestureRecognizer)
+    override func loadView(nibName: String) {
+        super.loadView(nibName: nibName)
+//        addGestureRecognizer(tapGestureRecognizer)
     }
     
-    private func makeRounded() {
-        let w = self.frame.width
-        let h = self.frame.height
-        
-        let size = max(w, h)
-        
-        containerView.frame = CGRect(x: 0, y: 0, width: size, height: size)
-        containerView.bounds = containerView.frame
-        
-        containerView.layer.cornerRadius = size / 2
-//        containerView.layer.shadowColor = UIColor.black.cgColor
-//        containerView.layer.shadowOffset = .zero
-//        containerView.layer.shadowRadius = 15.0
-//        containerView.layer.shadowOpacity = 0.5
-        
-        avatarImage.layer.cornerRadius = size / 2
-        avatarImage.clipsToBounds = true
-    
+    func makeRounded() {
+        print(self.containerView.frame)
+        self.containerView.layer.cornerRadius = constraintsSize / 2
+        self.avatarImage.layer.cornerRadius = constraintsSize / 2
     }
-
-    // MARK: -- Actions
-
-    lazy var tapGestureRecognizer: UITapGestureRecognizer = {
-            let recognizer = UITapGestureRecognizer(target: self,
-                                                    action: #selector(onTap))
-            recognizer.numberOfTapsRequired = 1    // Количество нажатий, необходимое для распознавания
-            recognizer.numberOfTouchesRequired = 1 // Количество пальцев, которые должны коснуться экрана для распознавания
-            return recognizer
-        }()
-
-
-    @objc func onTap() {
-        AnimationUtil.bouncing(unit: AnimationUnit(item: self, duration: 0.5, nextItem: nil, animType: .bounce))
+    
+    func addShadow() {
+        containerView.clipsToBounds = false
+        
+        let layer = containerView.layer
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOffset = .zero
+        layer.shadowOpacity = 0.5
+        layer.shadowRadius = 5
     }
 }

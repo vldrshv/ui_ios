@@ -64,6 +64,8 @@ extension UsersTableViewController : UITableViewDataSource {
         let user = UsersProvider.getAtSection(index: indexPath)
         
         cell.setUser(user: user)
+        cell.makeRounded()
+        cell.addShadow()
 
         return cell
     }
@@ -91,7 +93,10 @@ extension UsersTableViewController : UITableViewDelegate {
         usersTable.deselectRow(at: indexPath, animated: true)
         
         let sb = UIStoryboard(name: "BottomTabs", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: "SingleFriendViewController")
+        guard let vc = sb.instantiateViewController(withIdentifier: "SingleFriendViewController") as?
+                SingleFriendViewController else { return }
+        vc.userPhotoPath = UsersProvider.getAtSection(index: indexPath).getAvatarPath()
+        
         self.present(vc, animated: true, completion: nil)
     }
 }

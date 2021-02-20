@@ -43,16 +43,14 @@ class AnimationUtil {
     }
     
     static func bouncing(unit: AnimationUnit) {
-        
-        
         UIView.animate(withDuration: unit.duration,
                        delay: 0,
                        options: [],
                        animations: {
-                            unit.item.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+                            unit.item.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
                        },
                        completion: { _ in
-                            UIView.animate(withDuration: 10,
+                            UIView.animate(withDuration: 5,
                                            delay: 0,
                                            usingSpringWithDamping: 0.075,
                                            initialSpringVelocity: 1,
