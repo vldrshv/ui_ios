@@ -168,8 +168,8 @@
             filePath = "iosui/core/data_providers/UsersProvider.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "getSectionsCount()"
             landmarkType = "7">
          </BreakpointContent>
@@ -251,6 +251,22 @@
             startingLineNumber = "85"
             endingLineNumber = "85"
             landmarkName = "makeRounded()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "39C486B6-C0DF-4CD4-AD2A-01D209F404A0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iosui/utils/FadeCollectionViewLayout.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "addFadeToAttributes(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

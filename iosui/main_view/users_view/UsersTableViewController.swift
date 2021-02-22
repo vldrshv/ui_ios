@@ -44,14 +44,10 @@ class UsersTableViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("action")
-        
         guard let vc = segue.destination as? SingleFriendViewController else { return }
         guard let indexPath = usersTable.indexPathForSelectedRow else { return }
         
-        print("row selected = \(indexPath)")
         let user = UsersProvider.getAtSection(index: indexPath)
-        vc.userPhotoPath = user.getAvatarPath()
         vc.userName = user.getName()
         
         

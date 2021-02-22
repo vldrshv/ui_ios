@@ -9,14 +9,21 @@ import UIKit
 
 class SingleFriendViewController: UIViewController {
 
-    var userPhotoPath: String = ""
-    var userName: String = ""
+    var userName: String = "" {
+        didSet {
+            user = UsersProvider.getUserBy(name: userName)
+        }
+    }
+    private var user: IUser = VkUser.empty()
     
     private let cell_reuse_id = "PhotoCollectionViewCell"
     private let header_cell_reusable_id = "SingleFriendColectionHeaderCell"
     
     @IBOutlet private weak var userPhotosCollection: UICollectionView!
+    @IBOutlet weak var usersPhotoCollectionFlow: UICollectionViewFlowLayout!
+    
     private var cellSize: CGSize = .zero
+    private var scrollOffset = 0
     
     private var presentationStyle = CollectionPresentation.column2 {
         didSet {
@@ -32,24 +39,46 @@ class SingleFriendViewController: UIViewController {
             UINib(nibName: "SingleFriendColectionHeaderCell", bundle: nil),
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
             withReuseIdentifier: header_cell_reusable_id)
+        usersPhotoCollectionFlow.sectionHeadersPinToVisibleBounds = true
         
         userPhotosCollection.register(
             UINib(nibName: "PhotoCollectionViewCell", bundle: nil),
             forCellWithReuseIdentifier: cell_reuse_id
         )
         
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("open user photo")
+        
+        guard let vc = segue.destination as? SinglePhotoViewController else { return }
+        guard let indexPath = getIndexOfSelected() else { return }
+        
+        vc.user = user
+        vc.index = indexPath
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         guard let navController = self.navigationController else { return }
         UINavigationUtils.manageNavigationVisibility(navController: navController, appBarHidden: true, navigationBarHidden: false)
-    
         
-        updateCollectionViewStyle()
+        let photoCnt = user.getPhotoCount()
+        if photoCnt < 2 {
+            presentationStyle = .column1
+            navigationItem.rightBarButtonItem = nil
+            return
+        }
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: presentationStyle.buttonImage, style: .plain, target: self, action: #selector(changeContentLayout))
     }
 }
 
 extension SingleFriendViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return user.getPhotoCount()
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -60,9 +89,14 @@ extension SingleFriendViewController : UICollectionViewDataSource {
             fatalError("cannot convert to 'PhotoCollectionViewCell'")
         }
         
-        cell.setPhoto(path: "adidas")
+        let photoPath = user.getPhotoPathAt(index: indexPath.item)
+        
+        cell.setPhoto(path: photoPath)
         cell.setWidth(width: cellSize.width)
         cell.setHeight(height: cellSize.height)
+        
+        print("cell")
+        
         return cell
     }
     
@@ -73,8 +107,8 @@ extension SingleFriendViewController : UICollectionViewDataSource {
             withReuseIdentifier: "SingleFriendColectionHeaderCell",
             for: indexPath
         ) as? SingleFriendColectionHeaderCell else { return UICollectionReusableView() }
-        
-        header.setUser(userName: userName, photoPath: userPhotoPath)
+                
+        header.setUser(userName: userName, photoPath: user.getAvatarPath())
         
         return header
     }
@@ -89,12 +123,15 @@ extension SingleFriendViewController : UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 0)
+        return .zero
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let columns = presentationStyle.columns
-        cellSize = CGSize(width: collectionView.bounds.width / columns - 1, height: collectionView.bounds.width / columns - 1)
+        cellSize = CGSize(
+            width: collectionView.bounds.width / columns - 1,
+            height: collectionView.bounds.width / columns - 1
+        )
         return cellSize
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -108,29 +145,24 @@ extension SingleFriendViewController : UICollectionViewDelegateFlowLayout {
     
 // MARK: --Collection View Delegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("select")
-        guard let cell = getCellFor(indexPath: indexPath) else {
-            print("return")
-            return
-        }
-        
-        cell.onTap(afterTapAnimation: { collectionView.deselectItem(at: indexPath, animated: true) })
 
+        guard let cell = getCellFor(indexPath: indexPath) else { return }
+        
+        self.performSegue(withIdentifier: "openImageFullscreen", sender: self)
+        collectionView.deselectItem(at: indexPath, animated: false)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        print("deselect")
-    }
-    
+
 }
 
 // MARK: -- Collection presentation
 extension SingleFriendViewController {
     enum CollectionPresentation: String, CaseIterable {
-        case column2, column3
+        case column1, column2, column3
         
         var buttonImage: UIImage {
             switch self {
+            case .column1:
+                return image(file: "grid_1x1")
             case .column2:
                 return image(file: "grid_2x2")
             case .column3:
@@ -140,6 +172,8 @@ extension SingleFriendViewController {
         
         var columns: CGFloat {
             switch self {
+            case .column1:
+                return 1.0
             case .column2:
                 return 2.0
             case .column3:
@@ -157,7 +191,12 @@ extension SingleFriendViewController {
     func updateCollectionViewStyle() {
         navigationItem.rightBarButtonItem?.image = presentationStyle.buttonImage
         
-        userPhotosCollection.reloadData()
+//        userPhotosCollection.reloadData()
+        
+        userPhotosCollection.performBatchUpdates(
+            nil,
+            completion: {_ in self.userPhotosCollection.reloadData() }
+        )
     }
     
     @objc private func changeContentLayout() {
@@ -178,5 +217,19 @@ extension SingleFriendViewController {
     
     func getCellFor(indexPath: IndexPath) -> PhotoCollectionViewCell? {
         return userPhotosCollection.cellForItem(at: indexPath) as? PhotoCollectionViewCell
+    }
+    
+    func getSelectedCellRect(at: IndexPath) -> CGRect {
+        guard let cell = getCellFor(indexPath: at) else { return CGRect() }
+        
+        return cell.frame
+    }
+    
+    func getIndexOfSelected() -> IndexPath? {
+        guard let indexes = userPhotosCollection.indexPathsForSelectedItems else { return nil }
+        
+        if indexes.count < 1 { return nil }
+        
+        return indexes[0]
     }
 }

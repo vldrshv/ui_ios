@@ -38,6 +38,10 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         imageHeightConstraint.isActive = true
         imageHeightConstraint.constant = height
     }
+    
+    func setPhotoFitMode(mode: UIView.ContentMode) {
+        photoView.contentMode = mode
+    }
 
     func onTap(afterTapAnimation: (() -> Void)?) {
         

@@ -9,11 +9,15 @@
 /* Begin PBXBuildFile section */
 		F5004C6725CE660000C79C50 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5004C6625CE660000C79C50 /* UsersTableViewController.swift */; };
 		F5004C7125CE66FA00C79C50 /* UINavigationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5004C7025CE66FA00C79C50 /* UINavigationUtils.swift */; };
+		F54B489425E41D1D00C7347D /* SinglePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54B489325E41D1D00C7347D /* SinglePhotoViewController.swift */; };
 		F54CCDA025DD12F30017797F /* NewsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54CCD9F25DD12F30017797F /* NewsCollectionViewController.swift */; };
 		F54EFC4E25E3B6F100013698 /* SingleFriendColectionHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54EFC4C25E3B6F100013698 /* SingleFriendColectionHeaderCell.swift */; };
 		F54EFC4F25E3B6F100013698 /* SingleFriendColectionHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54EFC4D25E3B6F100013698 /* SingleFriendColectionHeaderCell.xib */; };
 		F54EFC5425E3D1CD00013698 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54EFC5325E3D1CD00013698 /* PhotoCollectionViewCell.swift */; };
 		F54EFC5925E3D21E00013698 /* PhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54EFC5825E3D21E00013698 /* PhotoCollectionViewCell.xib */; };
+		F5526F3025E447FC00734F07 /* ParallaxCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5526F2F25E447FC00734F07 /* ParallaxCollectionViewLayout.swift */; };
+		F5526F3525E4490E00734F07 /* FadeCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5526F3425E4490E00734F07 /* FadeCollectionViewLayout.swift */; };
+		F5526F3A25E4513300734F07 /* PhotoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5526F3925E4513300734F07 /* PhotoProvider.swift */; };
 		F552DC3A25CEEF2400F2633E /* GroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F552DC3825CEEF2400F2633E /* GroupsTableViewCell.swift */; };
 		F552DC3B25CEEF2400F2633E /* GroupsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F552DC3925CEEF2400F2633E /* GroupsTableViewCell.xib */; };
 		F554447425DFEDEC00AF3DE8 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F554447325DFEDEC00AF3DE8 /* LoaderView.swift */; };
@@ -78,11 +82,15 @@
 /* Begin PBXFileReference section */
 		F5004C6625CE660000C79C50 /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		F5004C7025CE66FA00C79C50 /* UINavigationUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationUtils.swift; sourceTree = "<group>"; };
+		F54B489325E41D1D00C7347D /* SinglePhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePhotoViewController.swift; sourceTree = "<group>"; };
 		F54CCD9F25DD12F30017797F /* NewsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewController.swift; sourceTree = "<group>"; };
 		F54EFC4C25E3B6F100013698 /* SingleFriendColectionHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleFriendColectionHeaderCell.swift; sourceTree = "<group>"; };
 		F54EFC4D25E3B6F100013698 /* SingleFriendColectionHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SingleFriendColectionHeaderCell.xib; sourceTree = "<group>"; };
 		F54EFC5325E3D1CD00013698 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		F54EFC5825E3D21E00013698 /* PhotoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCollectionViewCell.xib; sourceTree = "<group>"; };
+		F5526F2F25E447FC00734F07 /* ParallaxCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParallaxCollectionViewLayout.swift; sourceTree = "<group>"; };
+		F5526F3425E4490E00734F07 /* FadeCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeCollectionViewLayout.swift; sourceTree = "<group>"; };
+		F5526F3925E4513300734F07 /* PhotoProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoProvider.swift; sourceTree = "<group>"; };
 		F552DC3825CEEF2400F2633E /* GroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewCell.swift; sourceTree = "<group>"; };
 		F552DC3925CEEF2400F2633E /* GroupsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupsTableViewCell.xib; sourceTree = "<group>"; };
 		F554447325DFEDEC00AF3DE8 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
@@ -158,9 +166,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F54B489225E41CF200C7347D /* single_photo */ = {
+			isa = PBXGroup;
+			children = (
+				F54B489325E41D1D00C7347D /* SinglePhotoViewController.swift */,
+			);
+			path = single_photo;
+			sourceTree = "<group>";
+		};
 		F54EFC6025E3E58100013698 /* friend_photo */ = {
 			isa = PBXGroup;
 			children = (
+				F54B489225E41CF200C7347D /* single_photo */,
 				F54EFC5325E3D1CD00013698 /* PhotoCollectionViewCell.swift */,
 				F54EFC5825E3D21E00013698 /* PhotoCollectionViewCell.xib */,
 			);
@@ -261,6 +278,7 @@
 				F568B58025CF219300DAA783 /* UsersProvider.swift */,
 				F5749DA825D0071B00431A38 /* GroupsProvider.swift */,
 				F55AF7D225DC04F300F53218 /* NewsProvider.swift */,
+				F5526F3925E4513300734F07 /* PhotoProvider.swift */,
 			);
 			path = data_providers;
 			sourceTree = "<group>";
@@ -295,6 +313,8 @@
 				F5004C7025CE66FA00C79C50 /* UINavigationUtils.swift */,
 				F5749DAD25D01DC300431A38 /* ColorUtils.swift */,
 				F554449125E022EE00AF3DE8 /* AnimationType.swift */,
+				F5526F2F25E447FC00734F07 /* ParallaxCollectionViewLayout.swift */,
+				F5526F3425E4490E00734F07 /* FadeCollectionViewLayout.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -556,10 +576,12 @@
 				F5DC36A025D2D30800BBE3F5 /* UserInteractionListener.swift in Sources */,
 				F54EFC5425E3D1CD00013698 /* PhotoCollectionViewCell.swift in Sources */,
 				F568B59025CF243C00DAA783 /* UserTableViewCell.swift in Sources */,
+				F5526F3525E4490E00734F07 /* FadeCollectionViewLayout.swift in Sources */,
 				F5C38FEA25D2B1780008440A /* ActionButton.swift in Sources */,
 				F58D10C825DD156F00782B9B /* NewsCollectionCell.swift in Sources */,
 				F554449225E022EE00AF3DE8 /* AnimationType.swift in Sources */,
 				F55AF7CE25DC043500F53218 /* CommentButton.swift in Sources */,
+				F54B489425E41D1D00C7347D /* SinglePhotoViewController.swift in Sources */,
 				F552DC3A25CEEF2400F2633E /* GroupsTableViewCell.swift in Sources */,
 				F5749DAE25D01DC300431A38 /* ColorUtils.swift in Sources */,
 				F55C6DF025CDF400007D608D /* GroupItemTableViewController.swift in Sources */,
@@ -567,11 +589,13 @@
 				F584DFCD25D1B94000FCC692 /* SingleFriendViewController.swift in Sources */,
 				F568B57825CF1E7000DAA783 /* VkUser.swift in Sources */,
 				F5004C7125CE66FA00C79C50 /* UINavigationUtils.swift in Sources */,
+				F5526F3A25E4513300734F07 /* PhotoProvider.swift in Sources */,
 				F554448825DFFEF900AF3DE8 /* LoaderItem.swift in Sources */,
 				F554448D25E01DB300AF3DE8 /* Shape.swift in Sources */,
 				F5749DA425D0049000431A38 /* VkGroup.swift in Sources */,
 				F5749DA925D0071B00431A38 /* GroupsProvider.swift in Sources */,
 				F5004C6725CE660000C79C50 /* UsersTableViewController.swift in Sources */,
+				F5526F3025E447FC00734F07 /* ParallaxCollectionViewLayout.swift in Sources */,
 				F55C6DD925CDB876007D608D /* BottomTabsViewController.swift in Sources */,
 				F5C38FD125D271530008440A /* AvatarView.swift in Sources */,
 				F554447E25DFF2CD00AF3DE8 /* BaseView.swift in Sources */,

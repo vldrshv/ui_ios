@@ -12,6 +12,9 @@ class VkUser : IUser {
     private var name: String? = ""
     private var lastOnlineDate: String = ""
     private var avatarPath: String? = ""
+    private var photos = PhotoProvider.getPhotoPaths(
+        photoCount: Int.random(in: 0...10)
+    )
     
     init(name: String, lastOnlineDate: String, avatarPath: String) {
         self.name = name
@@ -31,8 +34,12 @@ class VkUser : IUser {
         return lastOnlineDate
     }
     
-    func getPhotoPaths() -> [String] {
-        return [String]()
+    func getPhotoCount() -> Int {
+        return photos.count
+    }
+    
+    func getPhotoPathAt(index: Int) -> String {
+        return photos[index]
     }
     
     func isEmpty() -> Bool {
@@ -42,13 +49,19 @@ class VkUser : IUser {
     func hasName() -> Bool {
         return !getName().isEmpty
     }
+    
+    static func empty() -> IUser {
+        return VkUser(name: "", lastOnlineDate: "", avatarPath: "")
+    }
 }
 
 protocol IUser {
     func getName() -> String
     func getLastOnlineDate() -> String
     func getAvatarPath() -> String
-    func getPhotoPaths() -> [String]
+    func getPhotoCount() -> Int
+    
+    func getPhotoPathAt(index: Int) -> String
     
     func isEmpty() -> Bool
     func hasName() -> Bool

@@ -41,6 +41,20 @@ class UsersProvider {
         return users[index.item]
     }
     
+    static func getUserBy(name: String) -> IUser {
+        if name == "" {
+            return VkUser.empty()
+        }
+        
+        for user in users {
+            if user.getName() == name {
+                return user
+            }
+        }
+        
+        return VkUser.empty()
+    }
+    
     
     // MARK: -- SECTIONS
     
