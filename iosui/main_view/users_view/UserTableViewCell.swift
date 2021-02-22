@@ -16,7 +16,6 @@ class UserTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        addGestureRecognizer(tapGestureRecognizer)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -42,20 +41,7 @@ class UserTableViewCell: UITableViewCell {
         avatarContainer.setNeedsDisplay()
     }
     
-    // MARK: -- Actions
-
-    lazy var tapGestureRecognizer: UITapGestureRecognizer = {
-            let recognizer = UITapGestureRecognizer(target: self,
-                                                    action: #selector(onTap))
-            recognizer.numberOfTapsRequired = 1    // Количество нажатий, необходимое для распознавания
-            recognizer.numberOfTouchesRequired = 1 // Количество пальцев, которые должны коснуться экрана для распознавания
-            return recognizer
-        }()
-
-
-    @objc func onTap() {
-        print("avatar")
-        AnimationUtil.bouncing(unit: AnimationUnit(item: self.avatarContainer, duration: 0.5, nextItem: nil, animType: .bounce))
+    func registerTap() {
+        avatarContainer.onTap()
     }
-    
 }

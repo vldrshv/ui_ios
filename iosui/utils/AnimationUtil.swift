@@ -10,12 +10,14 @@ import UIKit
 
 class AnimationUtil {
     
-    static func scale(v: UIView, scaleTo: CGFloat = 0.8) {
+    static func scale(v: UIView, scaleTo: CGFloat = 0.8, doOnComplete: (() -> Void)? = nil) {
+        print("scale")
         UIView.animate(withDuration: 0.1,
             animations: {
                 v.transform = CGAffineTransform(scaleX: scaleTo, y: scaleTo)
             },
             completion: { _ in
+                doOnComplete?()
                 UIView.animate(withDuration: 0.6) {
                     v.transform = CGAffineTransform.identity
                 }

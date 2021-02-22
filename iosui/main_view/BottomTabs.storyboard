@@ -107,6 +107,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="G6I-xn-Bjf" kind="show" identifier="showFriendPhotos" id="hK6-Ec-9GF"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -147,10 +150,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Vzh-SN-sHd">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            <collectionView clipsSubviews="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Vzh-SN-sHd">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Sym-iY-qyC">
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="1" minimumInteritemSpacing="1" id="Sym-iY-qyC">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -181,7 +184,9 @@
                             <constraint firstItem="hMg-Q4-LFd" firstAttribute="bottom" secondItem="Vzh-SN-sHd" secondAttribute="bottom" id="bN8-he-hDI"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="byE-1X-VXj"/>
+                    <navigationItem key="navigationItem" id="byE-1X-VXj">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="bIU-Zp-46Y"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="userPhotosCollection" destination="Vzh-SN-sHd" id="Qt9-Mb-Nq6"/>
                     </connections>

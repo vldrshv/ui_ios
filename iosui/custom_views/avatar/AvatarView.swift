@@ -77,7 +77,7 @@ class AvatarView: BaseView {
     
     override func loadView(nibName: String) {
         super.loadView(nibName: nibName)
-//        addGestureRecognizer(tapGestureRecognizer)
+        addGestureRecognizer(tapGestureRecognizer)
     }
     
     func makeRounded() {
@@ -94,5 +94,18 @@ class AvatarView: BaseView {
         layer.shadowOffset = .zero
         layer.shadowOpacity = 0.5
         layer.shadowRadius = 5
+    }
+    
+    lazy var tapGestureRecognizer: UITapGestureRecognizer = {
+            let recognizer = UITapGestureRecognizer(target: self,
+                                                    action: #selector(onTap))
+            recognizer.numberOfTapsRequired = 1    // Количество нажатий, необходимое для распознавания
+            recognizer.numberOfTouchesRequired = 1 // Количество пальцев, которые должны коснуться экрана для распознавания
+            return recognizer
+        }()
+    
+    @objc func onTap() {
+        print("avatar")
+        AnimationUtil.bouncing(unit: AnimationUnit(item: self, duration: 0.5, nextItem: nil, animType: .bounce))
     }
 }

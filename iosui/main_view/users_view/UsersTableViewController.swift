@@ -42,6 +42,20 @@ class UsersTableViewController: UIViewController {
         super.viewDidAppear(animated)
         initSearchSize()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("action")
+        
+        guard let vc = segue.destination as? SingleFriendViewController else { return }
+        guard let indexPath = usersTable.indexPathForSelectedRow else { return }
+        
+        print("row selected = \(indexPath)")
+        let user = UsersProvider.getAtSection(index: indexPath)
+        vc.userPhotoPath = user.getAvatarPath()
+        vc.userName = user.getName()
+        
+        
+    }
 }
     // MARK: - Table view data source
     
@@ -80,24 +94,14 @@ extension UsersTableViewController : UITableViewDataSource {
         return header
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-    }
-    
 }
 
 extension UsersTableViewController : UITableViewDelegate {
     // MARK: - On profile clicked
         
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "showFriendPhotos", sender: self)
         usersTable.deselectRow(at: indexPath, animated: true)
-        
-        let sb = UIStoryboard(name: "BottomTabs", bundle: nil)
-        guard let vc = sb.instantiateViewController(withIdentifier: "SingleFriendViewController") as?
-                SingleFriendViewController else { return }
-        vc.userPhotoPath = UsersProvider.getAtSection(index: indexPath).getAvatarPath()
-        
-        self.present(vc, animated: true, completion: nil)
     }
 }
 
