@@ -33,7 +33,7 @@
         <!--Friends-->
         <scene sceneID="H3l-bN-0We">
             <objects>
-                <navigationController id="yI0-1o-Sgv" sceneMemberID="viewController">
+                <navigationController id="yI0-1o-Sgv" customClass="FriendsNavigationViewController" customModule="iosui" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Friends" image="person.fill" catalog="system" id="PvB-75-Vq3"/>
                     <navigationBar key="navigationBar" hidden="YES" contentMode="scaleToFill" id="Jfx-Rc-AlF">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
