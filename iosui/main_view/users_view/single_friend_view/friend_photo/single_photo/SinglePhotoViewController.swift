@@ -8,11 +8,12 @@
 import UIKit
 
 class SinglePhotoViewController: UIViewController {
-
+    
     private let cell_reuse_id = "PhotoCollectionViewCell"
     @IBOutlet var photoCollectionView: UICollectionView!
     @IBAction func closeView(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+//        self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
     
     private var cellSize: CGSize = .zero
@@ -26,7 +27,6 @@ class SinglePhotoViewController: UIViewController {
         }
     }
     var index: IndexPath = IndexPath()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

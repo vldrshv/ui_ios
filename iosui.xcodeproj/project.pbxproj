@@ -41,6 +41,7 @@
 		F5689DBE25E8FB3500C763EC /* NavigationAnimationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5689DBD25E8FB3500C763EC /* NavigationAnimationDelegate.swift */; };
 		F5689DC425E90A8C00C763EC /* TransitionPresent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5689DC325E90A8C00C763EC /* TransitionPresent.swift */; };
 		F5689DC925E90A9E00C763EC /* TransitionDismiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5689DC825E90A9E00C763EC /* TransitionDismiss.swift */; };
+		F5689DCE25E90D4300C763EC /* TransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5689DCD25E90D4300C763EC /* TransitionDelegate.swift */; };
 		F568B57825CF1E7000DAA783 /* VkUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F568B57725CF1E7000DAA783 /* VkUser.swift */; };
 		F568B58125CF219300DAA783 /* UsersProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F568B58025CF219300DAA783 /* UsersProvider.swift */; };
 		F568B59025CF243C00DAA783 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F568B58E25CF243C00DAA783 /* UserTableViewCell.swift */; };
@@ -120,6 +121,7 @@
 		F5689DBD25E8FB3500C763EC /* NavigationAnimationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationAnimationDelegate.swift; sourceTree = "<group>"; };
 		F5689DC325E90A8C00C763EC /* TransitionPresent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionPresent.swift; sourceTree = "<group>"; };
 		F5689DC825E90A9E00C763EC /* TransitionDismiss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionDismiss.swift; sourceTree = "<group>"; };
+		F5689DCD25E90D4300C763EC /* TransitionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionDelegate.swift; sourceTree = "<group>"; };
 		F568B57725CF1E7000DAA783 /* VkUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkUser.swift; sourceTree = "<group>"; };
 		F568B58025CF219300DAA783 /* UsersProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersProvider.swift; sourceTree = "<group>"; };
 		F568B58E25CF243C00DAA783 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 			children = (
 				F5689DC325E90A8C00C763EC /* TransitionPresent.swift */,
 				F5689DC825E90A9E00C763EC /* TransitionDismiss.swift */,
+				F5689DCD25E90D4300C763EC /* TransitionDelegate.swift */,
 			);
 			path = transition_animation;
 			sourceTree = "<group>";
@@ -635,6 +638,7 @@
 				F5689DAD25E8F7FE00C763EC /* FriendsNavigationViewController.swift in Sources */,
 				F584DFCD25D1B94000FCC692 /* SingleFriendViewController.swift in Sources */,
 				F5689DB425E8F8F900C763EC /* NavigationAnimationPresent.swift in Sources */,
+				F5689DCE25E90D4300C763EC /* TransitionDelegate.swift in Sources */,
 				F568B57825CF1E7000DAA783 /* VkUser.swift in Sources */,
 				F5004C7125CE66FA00C79C50 /* UINavigationUtils.swift in Sources */,
 				F5526F3A25E4513300734F07 /* PhotoProvider.swift in Sources */,

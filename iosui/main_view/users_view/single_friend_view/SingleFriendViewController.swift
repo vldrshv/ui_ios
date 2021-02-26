@@ -8,6 +8,8 @@
 import UIKit
 
 class SingleFriendViewController: UIViewController {
+    private let transitionDelegate = TransitionDelegate()
+    
 
     var userName: String = "" {
         didSet {
@@ -50,13 +52,13 @@ class SingleFriendViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("open user photo")
-        
-        guard let vc = segue.destination as? SinglePhotoViewController else { return }
-        guard let indexPath = getIndexOfSelected() else { return }
-        
-        vc.user = user
-        vc.index = indexPath
+//        print("open user photo")
+//
+//        guard let vc = segue.destination as? SinglePhotoViewController else { return }
+//        guard let indexPath = getIndexOfSelected() else { return }
+//
+//        vc.user = user
+//        vc.index = indexPath
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -148,7 +150,20 @@ extension SingleFriendViewController : UICollectionViewDelegateFlowLayout {
 
         guard let cell = getCellFor(indexPath: indexPath) else { return }
         
-        self.performSegue(withIdentifier: "openImageFullscreen", sender: self)
+//        self.performSegue(withIdentifier: "openImageFullscreen", sender: self)
+        print("open user photo")
+        
+        let sb = UIStoryboard(name: "BottomTabs", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "SinglePhotoViewController") as! SinglePhotoViewController
+        
+        guard let indexPath = getIndexOfSelected() else { return }
+        
+        vc.user = user
+        vc.index = indexPath
+        
+        vc.transitioningDelegate = transitionDelegate
+        self.present(vc, animated: true, completion: nil)
+        
         collectionView.deselectItem(at: indexPath, animated: false)
     }
 
