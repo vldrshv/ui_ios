@@ -50,17 +50,7 @@ class SingleFriendViewController: UIViewController {
         
         
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        print("open user photo")
-//
-//        guard let vc = segue.destination as? SinglePhotoViewController else { return }
-//        guard let indexPath = getIndexOfSelected() else { return }
-//
-//        vc.user = user
-//        vc.index = indexPath
-    }
-    
+        
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -147,24 +137,24 @@ extension SingleFriendViewController : UICollectionViewDelegateFlowLayout {
     
 // MARK: --Collection View Delegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
-        guard let cell = getCellFor(indexPath: indexPath) else { return }
         
-//        self.performSegue(withIdentifier: "openImageFullscreen", sender: self)
-        print("open user photo")
+        showPhotosFullSscreen()
         
+        collectionView.deselectItem(at: indexPath, animated: false)
+    }
+    
+    private func showPhotosFullScreen() {
         let sb = UIStoryboard(name: "BottomTabs", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "SinglePhotoViewController") as! SinglePhotoViewController
-        
+
         guard let indexPath = getIndexOfSelected() else { return }
-        
+
         vc.user = user
         vc.index = indexPath
         
         vc.transitioningDelegate = transitionDelegate
-        self.present(vc, animated: true, completion: nil)
         
-        collectionView.deselectItem(at: indexPath, animated: false)
+        self.present(vc, animated: true, completion: nil)
     }
 
 }
@@ -205,8 +195,6 @@ extension SingleFriendViewController {
     
     func updateCollectionViewStyle() {
         navigationItem.rightBarButtonItem?.image = presentationStyle.buttonImage
-        
-//        userPhotosCollection.reloadData()
         
         userPhotosCollection.performBatchUpdates(
             nil,

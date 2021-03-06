@@ -21,15 +21,15 @@ class TransitionDismiss : NSObject, UIViewControllerAnimatedTransitioning {
         
         let containerViewFrame = transitionContext.containerView.frame
         let sourceViewTargetFrame = CGRect(x: 0,
-                                           y: -containerViewFrame.height,
+                                           y: containerViewFrame.height,
                                            width: source.view.frame.width,
                                            height: source.view.frame.height)
         let destinationViewTargetFrame = source.view.frame
 
-        transitionContext.containerView.addSubview(destination.view)
+        transitionContext.containerView.addSubview(source.view)
 
         destination.view.frame = CGRect(x: 0,
-                                        y: containerViewFrame.height,
+                                        y: -containerViewFrame.height,
                                         width: source.view.frame.width,
                                         height: source.view.frame.height)
 
@@ -41,7 +41,7 @@ class TransitionDismiss : NSObject, UIViewControllerAnimatedTransitioning {
                         destination.view.frame = destinationViewTargetFrame
         }) { finished in
             source.removeFromParent()
-            transitionContext.completeTransition(finished)
+            transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         }
     }
     

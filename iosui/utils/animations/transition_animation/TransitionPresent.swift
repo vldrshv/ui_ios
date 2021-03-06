@@ -19,6 +19,10 @@ class TransitionPresent : NSObject, UIViewControllerAnimatedTransitioning {
         guard let destination = transitionContext.viewController(forKey: .to)
         else { return }
         
+//        if self.transitionType == .navigation {
+//            transitionContext.containerView.insertSubview(destination.view, belowSubview: source.view)
+//        }
+        
         let containerViewFrame = transitionContext.containerView.frame
         let sourceViewTargetFrame = CGRect(x: 0,
                                            y: -containerViewFrame.height,
@@ -41,9 +45,10 @@ class TransitionPresent : NSObject, UIViewControllerAnimatedTransitioning {
                         destination.view.frame = destinationViewTargetFrame
         }) { finished in
             source.removeFromParent()
-            transitionContext.completeTransition(finished)
+            transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         }
     }
+
     func animationEnded(_ transitionCompleted: Bool) {
         
     }

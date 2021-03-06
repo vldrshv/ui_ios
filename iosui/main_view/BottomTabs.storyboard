@@ -133,9 +133,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </collectionViewCellContentView>
-                                        <connections>
-                                            <segue destination="UXG-ky-zok" kind="show" identifier="openImageFullscreen" id="Zrp-Um-sUo"/>
-                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -208,7 +205,7 @@
                                     <imageReference key="image" image="multiply.circle.fill" catalog="system" symbolScale="large"/>
                                 </state>
                                 <connections>
-                                    <action selector="closeView:" destination="UXG-ky-zok" eventType="touchUpInside" id="GLt-Yl-jcW"/>
+                                    <action selector="closeVC:" destination="UXG-ky-zok" eventType="touchUpInside" id="Trj-w9-iM1"/>
                                 </connections>
                             </button>
                         </subviews>
