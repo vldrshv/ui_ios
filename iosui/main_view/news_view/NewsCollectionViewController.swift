@@ -9,6 +9,11 @@ import UIKit
 
 class NewsCollectionViewController: UIViewController {
 
+    let transitionDelegate = TransitionDelegate()
+    
+    var selectedCell: UICollectionViewCell? = nil
+    var selectedCellIndex: IndexPath = IndexPath()
+    
     @IBOutlet private weak var newsCollection: UICollectionView!
     @IBOutlet weak var newsCollectionFlow: UICollectionViewFlowLayout! {
         didSet {
@@ -80,5 +85,19 @@ extension NewsCollectionViewController : UICollectionViewDelegate, UICollectionV
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let sb = UIStoryboard(name: "BottomTabs", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "SingleNewsViewController") as! SingleNewsViewController
+                
+        self.present(vc, animated: true, completion: nil)
+        vc.imagePath = NewsProvider.getImagePathAt(index: indexPath)
+        vc.newsTitleText = NewsProvider.getTitleAt(index: indexPath)
+        vc.newsBodyText = NewsProvider.getTextAt(index: indexPath)
+        
+        print(vc.imagePath)
+        
+        collectionView.deselectItem(at: indexPath, animated: false)
     }
 }

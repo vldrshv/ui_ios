@@ -54,7 +54,10 @@ class NewsCollectionCell: UICollectionViewCell {
         ])
         
         addShadows()
-
+    }
+    
+    func animate() {
+        AnimationUtil.scale(v: self.containerView)
     }
     
     func setNews(title: String, text: String, imagePath: String) {

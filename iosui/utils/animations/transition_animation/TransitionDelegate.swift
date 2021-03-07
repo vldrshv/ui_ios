@@ -10,7 +10,7 @@ import UIKit
 class TransitionDelegate: NSObject, UIViewControllerTransitioningDelegate {
     
     private var view: UIView = UIView()
-    
+
     func setFrame(_ frame: UIView) {
         self.view = frame
     }

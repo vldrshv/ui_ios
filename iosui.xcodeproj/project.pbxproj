@@ -27,6 +27,7 @@
 		F554448825DFFEF900AF3DE8 /* LoaderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F554448725DFFEF900AF3DE8 /* LoaderItem.swift */; };
 		F554448D25E01DB300AF3DE8 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = F554448C25E01DB300AF3DE8 /* Shape.swift */; };
 		F554449225E022EE00AF3DE8 /* AnimationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F554449125E022EE00AF3DE8 /* AnimationType.swift */; };
+		F5588B5F25F5596E00D809D6 /* SingleNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5588B5E25F5596E00D809D6 /* SingleNewsViewController.swift */; };
 		F55AF7C925DC029E00F53218 /* ShareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55AF7C825DC029E00F53218 /* ShareButton.swift */; };
 		F55AF7CE25DC043500F53218 /* CommentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55AF7CD25DC043500F53218 /* CommentButton.swift */; };
 		F55AF7D325DC04F300F53218 /* NewsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55AF7D225DC04F300F53218 /* NewsProvider.swift */; };
@@ -61,6 +62,7 @@
 		F593808C25C5737400904E6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F593808A25C5737400904E6A /* LaunchScreen.storyboard */; };
 		F593809725C5737400904E6A /* iosuiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F593809625C5737400904E6A /* iosuiTests.swift */; };
 		F59380A225C5737400904E6A /* iosuiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59380A125C5737400904E6A /* iosuiUITests.swift */; };
+		F5B0C45525F575A00089D80C /* GestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B0C45425F575A00089D80C /* GestureRecognizer.swift */; };
 		F5C38FD125D271530008440A /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C38FD025D271530008440A /* AvatarView.swift */; };
 		F5C38FDE25D28E640008440A /* UIAvatarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5C38FDD25D28E640008440A /* UIAvatarView.xib */; };
 		F5C38FEA25D2B1780008440A /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C38FE925D2B1780008440A /* ActionButton.swift */; };
@@ -107,6 +109,7 @@
 		F554448725DFFEF900AF3DE8 /* LoaderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderItem.swift; sourceTree = "<group>"; };
 		F554448C25E01DB300AF3DE8 /* Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
 		F554449125E022EE00AF3DE8 /* AnimationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationType.swift; sourceTree = "<group>"; };
+		F5588B5E25F5596E00D809D6 /* SingleNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleNewsViewController.swift; sourceTree = "<group>"; };
 		F55AF7C825DC029E00F53218 /* ShareButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareButton.swift; sourceTree = "<group>"; };
 		F55AF7CD25DC043500F53218 /* CommentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentButton.swift; sourceTree = "<group>"; };
 		F55AF7D225DC04F300F53218 /* NewsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsProvider.swift; sourceTree = "<group>"; };
@@ -147,6 +150,7 @@
 		F593809D25C5737400904E6A /* iosuiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iosuiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F59380A125C5737400904E6A /* iosuiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iosuiUITests.swift; sourceTree = "<group>"; };
 		F59380A325C5737400904E6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F5B0C45425F575A00089D80C /* GestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureRecognizer.swift; sourceTree = "<group>"; };
 		F5C38FD025D271530008440A /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		F5C38FDD25D28E640008440A /* UIAvatarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIAvatarView.xib; sourceTree = "<group>"; };
 		F5C38FE925D2B1780008440A /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
@@ -255,6 +259,7 @@
 			children = (
 				F55AF7C025DBCE2700F53218 /* news_cells */,
 				F54CCD9F25DD12F30017797F /* NewsCollectionViewController.swift */,
+				F5588B5E25F5596E00D809D6 /* SingleNewsViewController.swift */,
 			);
 			path = news_view;
 			sourceTree = "<group>";
@@ -360,6 +365,7 @@
 				F554449125E022EE00AF3DE8 /* AnimationType.swift */,
 				F5526F2F25E447FC00734F07 /* ParallaxCollectionViewLayout.swift */,
 				F5526F3425E4490E00734F07 /* FadeCollectionViewLayout.swift */,
+				F5B0C45425F575A00089D80C /* GestureRecognizer.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -632,7 +638,9 @@
 				F54B489425E41D1D00C7347D /* SinglePhotoViewController.swift in Sources */,
 				F552DC3A25CEEF2400F2633E /* GroupsTableViewCell.swift in Sources */,
 				F5749DAE25D01DC300431A38 /* ColorUtils.swift in Sources */,
+				F5588B5F25F5596E00D809D6 /* SingleNewsViewController.swift in Sources */,
 				F5689DBE25E8FB3500C763EC /* NavigationAnimationDelegate.swift in Sources */,
+				F5B0C45525F575A00089D80C /* GestureRecognizer.swift in Sources */,
 				F55C6DF025CDF400007D608D /* GroupItemTableViewController.swift in Sources */,
 				F54EFC4E25E3B6F100013698 /* SingleFriendColectionHeaderCell.swift in Sources */,
 				F5689DAD25E8F7FE00C763EC /* FriendsNavigationViewController.swift in Sources */,
