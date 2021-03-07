@@ -29,6 +29,10 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         self.photoView.image = image
     }
     
+    func getPhoto() -> UIImageView {
+        return photoView
+    }
+    
     func setWidth(width: CGFloat) {
         imageWidthConstraint.isActive = true
         imageWidthConstraint.constant = width

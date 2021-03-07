@@ -137,8 +137,11 @@ extension SingleFriendViewController : UICollectionViewDelegateFlowLayout {
     
 // MARK: --Collection View Delegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = getCellFor(indexPath: indexPath) else { return }
         
-        showPhotosFullSscreen()
+        transitionDelegate.setFrame(cell)
+        
+        showPhotosFullScreen()
         
         collectionView.deselectItem(at: indexPath, animated: false)
     }
@@ -148,6 +151,7 @@ extension SingleFriendViewController : UICollectionViewDelegateFlowLayout {
         let vc = sb.instantiateViewController(withIdentifier: "SinglePhotoViewController") as! SinglePhotoViewController
 
         guard let indexPath = getIndexOfSelected() else { return }
+//        guard let cellFrame = getCellFor(indexPath: indexPath)?.frame else { return }
 
         vc.user = user
         vc.index = indexPath
@@ -156,7 +160,6 @@ extension SingleFriendViewController : UICollectionViewDelegateFlowLayout {
         
         self.present(vc, animated: true, completion: nil)
     }
-
 }
 
 // MARK: -- Collection presentation

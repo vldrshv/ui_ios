@@ -8,6 +8,7 @@
 import UIKit
 
 class TransitionDismiss : NSObject, UIViewControllerAnimatedTransitioning {
+    
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 1
     }
@@ -24,6 +25,7 @@ class TransitionDismiss : NSObject, UIViewControllerAnimatedTransitioning {
                                            y: containerViewFrame.height,
                                            width: source.view.frame.width,
                                            height: source.view.frame.height)
+        
         let destinationViewTargetFrame = source.view.frame
 
         transitionContext.containerView.addSubview(source.view)
@@ -32,7 +34,6 @@ class TransitionDismiss : NSObject, UIViewControllerAnimatedTransitioning {
                                         y: -containerViewFrame.height,
                                         width: source.view.frame.width,
                                         height: source.view.frame.height)
-
 
         UIView
             .animate(withDuration: self.transitionDuration(using: transitionContext),
