@@ -9,6 +9,13 @@ import Foundation
 
 
 class NewsProvider {
+    static let titles = [
+        "Это титульник для первой новости",
+        "Для второй",
+        "3-я новость тоже с титульником",
+        "И 4-я тоже",
+        "Новость со звездочкой"
+    ]
     static let lables = [
         "На основе предыдущего ПЗ",
         "Сделать группировку друзей по первой букве фамилии. Добавить header секции для таблицы со списком друзей. Он должен содержать первую букву фамилии и иметь полупрозрачный цвет фона, цвет которого совпадает с цветом таблицы",
@@ -18,13 +25,17 @@ class NewsProvider {
     ]
     static let likes = [1000, 1, 3, 4, 0]
     static let isLiked = [true, false, true, true, false]
-    static let imgPath = ["adidas", "adidas", "adidas", "adidas", "adidas"]
+    static let imgPath = ["1", "2", "3", "4", "5"]
     
     static func getNewsCount() -> Int {
         return min(lables.count, likes.count, isLiked.count, imgPath.count)
     }
     
     static func getTitleAt(index: IndexPath) -> String {
+        return titles[index.item]
+    }
+    
+    static func getTextAt(index: IndexPath) -> String {
         return lables[index.item]
     }
     

@@ -27,6 +27,16 @@ class NewsCollectionViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        guard let navController = self.navigationController else {
+            return
+        }
+        
+        UINavigationUtils.manageNavigationVisibility(navController: navController, appBarHidden: false, navigationBarHidden: true)
+    }
+    
 }
 
 extension NewsCollectionViewController : UICollectionViewDataSource {
@@ -43,11 +53,12 @@ extension NewsCollectionViewController : UICollectionViewDataSource {
 
         
         let title = NewsProvider.getTitleAt(index: indexPath)
+        let text = NewsProvider.getTextAt(index: indexPath)
         let imagePath = NewsProvider.getImagePathAt(index: indexPath)
         let isLiked = NewsProvider.getIsLiked(index: indexPath)
         let likesCount = NewsProvider.getLikesCount(index: indexPath)
         cell.setWidth(newsCollection.bounds.width)
-        cell.setNews(title: title, imagePath: imagePath)
+        cell.setNews(title: title, text: text, imagePath: imagePath)
         cell.setLikes(isLiked: isLiked, likesCount: likesCount)
         
         return cell
@@ -63,5 +74,11 @@ extension NewsCollectionViewController : UICollectionViewDelegate, UICollectionV
         print("set size to \(size)")
         
         return size
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
 }

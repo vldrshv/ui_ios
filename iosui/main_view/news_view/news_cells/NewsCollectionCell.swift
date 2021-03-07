@@ -11,6 +11,7 @@ class NewsCollectionCell: UICollectionViewCell {
     
 //  MARK: -- VIEWS
     @IBOutlet private weak var containerView: UIView!
+    @IBOutlet private weak var newsTitle: UILabel!
     @IBOutlet private weak var newsLabel: UILabel!
     @IBOutlet private weak var newsImage: UIImageView!
     @IBOutlet private weak var likeButton: LikeButton!
@@ -21,6 +22,7 @@ class NewsCollectionCell: UICollectionViewCell {
              maxWidthConstraint.isActive = false
          }
      }
+    @IBOutlet private weak var titleWidthConstraint: NSLayoutConstraint!
     @IBOutlet private weak var textWidthConstraint: NSLayoutConstraint!
     @IBOutlet private weak var imageWidthConstraint: NSLayoutConstraint!
     @IBOutlet private weak var imageHeightConstraint: NSLayoutConstraint!
@@ -34,15 +36,14 @@ class NewsCollectionCell: UICollectionViewCell {
             maxWidthConstraint.constant = maxWidth - 16
            
            textWidthConstraint.constant = maxWidthConstraint.constant - 32
+            titleWidthConstraint.constant = textWidthConstraint.constant
            imageWidthConstraint.constant = maxWidthConstraint.constant
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-//        self.backgroundColor = .green
 
-        
         contentView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
@@ -56,8 +57,9 @@ class NewsCollectionCell: UICollectionViewCell {
 
     }
     
-    func setNews(title: String, imagePath: String) {
-        newsLabel.text = title
+    func setNews(title: String, text: String, imagePath: String) {
+        newsTitle.text = title//"Pltcm fjdshgjs dfgds"
+        newsLabel.text = text
         newsImage.image = UIImage(named: imagePath)
         
         newsImage.frame = updateImageSizes(newsImage.image)
@@ -100,9 +102,10 @@ class NewsCollectionCell: UICollectionViewCell {
         layer.shadowColor = UIColor.gray.cgColor
         layer.shadowOffset = .zero
         layer.shadowOpacity = 0.5
+        layer.shadowRadius = 10
         layer.cornerRadius = 12
         
-        newsImage.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        //newsImage.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         newsImage.layer.cornerRadius = 12
     }
 }
