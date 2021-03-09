@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NewsCollectionCell: UICollectionViewCell {
+class NewsCollectionCell: ExpandableCell {
     
 //  MARK: -- VIEWS
     @IBOutlet private weak var containerView: UIView!
@@ -54,6 +54,13 @@ class NewsCollectionCell: UICollectionViewCell {
         ])
         
         addShadows()
+        
+        setOnExpand {
+            self.newsLabel.numberOfLines = 0
+        }
+        setOnCollapse {
+            self.newsLabel.numberOfLines = 3
+        }
     }
     
     func animate() {

@@ -232,8 +232,8 @@
             filePath = "iosui/main_view/news_view/news_cells/NewsCollectionCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
             landmarkName = "updateImageSizes(_:)"
             landmarkType = "7">
          </BreakpointContent>

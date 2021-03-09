@@ -18,6 +18,7 @@
 		F5526F3025E447FC00734F07 /* ParallaxCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5526F2F25E447FC00734F07 /* ParallaxCollectionViewLayout.swift */; };
 		F5526F3525E4490E00734F07 /* FadeCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5526F3425E4490E00734F07 /* FadeCollectionViewLayout.swift */; };
 		F5526F3A25E4513300734F07 /* PhotoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5526F3925E4513300734F07 /* PhotoProvider.swift */; };
+		F552AB1D25F76B1C000BACE0 /* ExpandableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F552AB1C25F76B1C000BACE0 /* ExpandableCell.swift */; };
 		F552DC3A25CEEF2400F2633E /* GroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F552DC3825CEEF2400F2633E /* GroupsTableViewCell.swift */; };
 		F552DC3B25CEEF2400F2633E /* GroupsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F552DC3925CEEF2400F2633E /* GroupsTableViewCell.xib */; };
 		F554447425DFEDEC00AF3DE8 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F554447325DFEDEC00AF3DE8 /* LoaderView.swift */; };
@@ -100,6 +101,7 @@
 		F5526F2F25E447FC00734F07 /* ParallaxCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParallaxCollectionViewLayout.swift; sourceTree = "<group>"; };
 		F5526F3425E4490E00734F07 /* FadeCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeCollectionViewLayout.swift; sourceTree = "<group>"; };
 		F5526F3925E4513300734F07 /* PhotoProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoProvider.swift; sourceTree = "<group>"; };
+		F552AB1C25F76B1C000BACE0 /* ExpandableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableCell.swift; sourceTree = "<group>"; };
 		F552DC3825CEEF2400F2633E /* GroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewCell.swift; sourceTree = "<group>"; };
 		F552DC3925CEEF2400F2633E /* GroupsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupsTableViewCell.xib; sourceTree = "<group>"; };
 		F554447325DFEDEC00AF3DE8 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
@@ -406,6 +408,7 @@
 				F578D63D25D8342500076191 /* table_headers */,
 				F5C38FE825D2B1560008440A /* action_button */,
 				F554447D25DFF2CD00AF3DE8 /* BaseView.swift */,
+				F552AB1C25F76B1C000BACE0 /* ExpandableCell.swift */,
 			);
 			path = custom_views;
 			sourceTree = "<group>";
@@ -654,6 +657,7 @@
 				F554448D25E01DB300AF3DE8 /* Shape.swift in Sources */,
 				F5749DA425D0049000431A38 /* VkGroup.swift in Sources */,
 				F5749DA925D0071B00431A38 /* GroupsProvider.swift in Sources */,
+				F552AB1D25F76B1C000BACE0 /* ExpandableCell.swift in Sources */,
 				F5004C6725CE660000C79C50 /* UsersTableViewController.swift in Sources */,
 				F5526F3025E447FC00734F07 /* ParallaxCollectionViewLayout.swift in Sources */,
 				F55C6DD925CDB876007D608D /* BottomTabsViewController.swift in Sources */,

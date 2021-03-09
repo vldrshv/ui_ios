@@ -11,8 +11,13 @@ class NewsCollectionViewController: UIViewController {
 
     let transitionDelegate = TransitionDelegate()
     
-    var selectedCell: UICollectionViewCell? = nil
-    var selectedCellIndex: IndexPath = IndexPath()
+    private var expandedCell: UICollectionViewCell?
+    private var hiddenCells: [ExpandableCell] = []
+    private var isStatusBarHidden = false
+
+    override var prefersStatusBarHidden: Bool {
+        return isStatusBarHidden
+    }
     
     @IBOutlet private weak var newsCollection: UICollectionView!
     @IBOutlet weak var newsCollectionFlow: UICollectionViewFlowLayout! {
@@ -88,15 +93,75 @@ extension NewsCollectionViewController : UICollectionViewDelegate, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let sb = UIStoryboard(name: "BottomTabs", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: "SingleNewsViewController") as! SingleNewsViewController
-                
-        self.present(vc, animated: true, completion: nil)
-        vc.imagePath = NewsProvider.getImagePathAt(index: indexPath)
-        vc.newsTitleText = NewsProvider.getTitleAt(index: indexPath)
-        vc.newsBodyText = NewsProvider.getTextAt(index: indexPath)
         
-        print(vc.imagePath)
+        if collectionView.contentOffset.y < 0 ||
+                collectionView.contentOffset.y > collectionView.contentSize.height - collectionView.frame.height {
+            return
+        }
+        
+        let dampingRatio: CGFloat = 0.8
+            let initialVelocity = CGVector.zero
+            let springParameters = UISpringTimingParameters(dampingRatio: dampingRatio, initialVelocity: initialVelocity)
+            let animator = UIViewPropertyAnimator(duration: 0.5, timingParameters: springParameters)
+            
+            
+            self.view.isUserInteractionEnabled = false
+            
+        if let selectedCell = expandedCell as? ExpandableCell {
+            isStatusBarHidden = false
+            
+            animator.addAnimations {
+                selectedCell.collapse()
+                
+                for cell in self.hiddenCells {
+                    cell.show()
+                }
+            }
+            
+            animator.addCompletion { _ in
+                collectionView.isScrollEnabled = true
+                
+                self.expandedCell = nil
+                self.hiddenCells.removeAll()
+            }
+        } else {
+            isStatusBarHidden = true
+            
+            collectionView.isScrollEnabled = false
+            
+            let selectedCell = collectionView.cellForItem(at: indexPath)! as! ExpandableCell
+            let frameOfSelectedCell = selectedCell.frame
+            
+            expandedCell = selectedCell
+            hiddenCells = collectionView.visibleCells.map { $0 as! ExpandableCell }.filter { $0 != selectedCell }
+            
+            animator.addAnimations {
+                selectedCell.expand(in: collectionView)
+                
+                for cell in self.hiddenCells {
+                    cell.hide(in: collectionView, frameOfSelectedCell: frameOfSelectedCell)
+                }
+            }
+        }
+        animator.addAnimations {
+                self.setNeedsStatusBarAppearanceUpdate()
+            }
+
+            animator.addCompletion { _ in
+                self.view.isUserInteractionEnabled = true
+            }
+            
+            animator.startAnimation()
+        
+//        let sb = UIStoryboard(name: "BottomTabs", bundle: nil)
+//        let vc = sb.instantiateViewController(withIdentifier: "SingleNewsViewController") as! SingleNewsViewController
+//
+//        self.present(vc, animated: true, completion: nil)
+//        vc.imagePath = NewsProvider.getImagePathAt(index: indexPath)
+//        vc.newsTitleText = NewsProvider.getTitleAt(index: indexPath)
+//        vc.newsBodyText = NewsProvider.getTextAt(index: indexPath)
+//
+//        print(vc.imagePath)
         
         collectionView.deselectItem(at: indexPath, animated: false)
     }

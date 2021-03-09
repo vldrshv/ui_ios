@@ -39,7 +39,7 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IW8-nA-aKP" customClass="LikeButton" customModule="iosui" customModuleProvider="target">
-                                <rect key="frame" x="287" y="317" width="50" height="15"/>
+                                <rect key="frame" x="287" y="318" width="50" height="0.0"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5as-eE-jgz" customClass="CommentButton" customModule="iosui" customModuleProvider="target">
@@ -66,10 +66,10 @@
                         <constraints>
                             <constraint firstItem="5as-eE-jgz" firstAttribute="leading" secondItem="1zF-Mk-fAz" secondAttribute="leading" constant="16" id="2ks-8J-XUG"/>
                             <constraint firstItem="dKW-bN-pAG" firstAttribute="leading" secondItem="1zF-Mk-fAz" secondAttribute="leading" id="7Q5-47-aas"/>
-                            <constraint firstItem="5as-eE-jgz" firstAttribute="top" secondItem="bF8-vJ-K8O" secondAttribute="bottom" constant="16" id="8NZ-d4-Ygg"/>
+                            <constraint firstItem="5as-eE-jgz" firstAttribute="top" relation="greaterThanOrEqual" secondItem="bF8-vJ-K8O" secondAttribute="bottom" constant="16" id="8NZ-d4-Ygg"/>
                             <constraint firstItem="74t-Fg-lbh" firstAttribute="leading" secondItem="5as-eE-jgz" secondAttribute="trailing" constant="16" id="Bmz-Nd-laf"/>
                             <constraint firstItem="bF8-vJ-K8O" firstAttribute="leading" secondItem="1zF-Mk-fAz" secondAttribute="leading" constant="16" id="FhO-wx-T6b"/>
-                            <constraint firstItem="74t-Fg-lbh" firstAttribute="top" secondItem="bF8-vJ-K8O" secondAttribute="bottom" constant="16" id="Hl0-bL-JkC"/>
+                            <constraint firstItem="74t-Fg-lbh" firstAttribute="top" relation="greaterThanOrEqual" secondItem="bF8-vJ-K8O" secondAttribute="bottom" constant="16" id="Hl0-bL-JkC"/>
                             <constraint firstItem="vUk-3g-XRl" firstAttribute="leading" secondItem="1zF-Mk-fAz" secondAttribute="leading" constant="16" id="JiD-Op-uIw"/>
                             <constraint firstAttribute="bottom" secondItem="74t-Fg-lbh" secondAttribute="bottom" constant="16" id="K2p-a4-3st"/>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="345" id="L2Y-mz-kQ4"/>
@@ -78,7 +78,7 @@
                             <constraint firstItem="dKW-bN-pAG" firstAttribute="top" secondItem="1zF-Mk-fAz" secondAttribute="top" id="P6K-4c-r1w"/>
                             <constraint firstItem="IW8-nA-aKP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="74t-Fg-lbh" secondAttribute="trailing" constant="16" id="acr-4k-0xK"/>
                             <constraint firstAttribute="trailing" secondItem="IW8-nA-aKP" secondAttribute="trailing" constant="8" id="d4T-he-yg0"/>
-                            <constraint firstItem="IW8-nA-aKP" firstAttribute="top" secondItem="bF8-vJ-K8O" secondAttribute="bottom" constant="16" id="eKD-T3-gPf"/>
+                            <constraint firstItem="IW8-nA-aKP" firstAttribute="top" relation="greaterThanOrEqual" secondItem="bF8-vJ-K8O" secondAttribute="bottom" constant="16" id="eKD-T3-gPf"/>
                             <constraint firstItem="bF8-vJ-K8O" firstAttribute="top" secondItem="vUk-3g-XRl" secondAttribute="bottom" constant="16" id="fey-xT-voW"/>
                             <constraint firstItem="vUk-3g-XRl" firstAttribute="top" secondItem="dKW-bN-pAG" secondAttribute="bottom" constant="16" id="gMJ-kF-3c4"/>
                             <constraint firstAttribute="trailing" secondItem="vUk-3g-XRl" secondAttribute="trailing" constant="16" id="hLL-nk-zIX"/>
