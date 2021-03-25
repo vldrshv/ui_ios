@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -239,44 +239,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="QJS-tH-wGr">
+                        <stackView key="tableHeaderView" opaque="NO" contentMode="scaleToFill" axis="vertical" id="3YV-Ti-dGL">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FpR-fC-9O1">
-                                    <rect key="frame" x="17.5" y="6" width="20" height="30"/>
-                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <state key="normal" image="magnifyingglass" catalog="system"/>
-                                    <connections>
-                                        <action selector="searchGroups:" destination="nbr-ic-0gs" eventType="touchUpInside" id="x79-54-Uh1"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aOn-wo-Tz1">
-                                    <rect key="frame" x="386.5" y="8" width="19.5" height="28"/>
-                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <state key="normal" image="clear" catalog="system"/>
-                                </button>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="3YV-Ti-dGL">
-                                    <rect key="frame" x="45.5" y="0.0" width="333" height="44"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="333" id="Foq-vf-kTa"/>
-                                    </constraints>
-                                </stackView>
-                            </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            <constraints>
-                                <constraint firstItem="aOn-wo-Tz1" firstAttribute="top" secondItem="QJS-tH-wGr" secondAttribute="top" constant="8" id="08C-oX-0Ju"/>
-                                <constraint firstItem="aOn-wo-Tz1" firstAttribute="leading" secondItem="3YV-Ti-dGL" secondAttribute="trailing" constant="8" id="7yL-Fn-Ha2"/>
-                                <constraint firstAttribute="bottom" secondItem="FpR-fC-9O1" secondAttribute="bottom" constant="8" id="8A9-ab-KWv"/>
-                                <constraint firstAttribute="bottom" secondItem="aOn-wo-Tz1" secondAttribute="bottom" constant="8" id="CKy-0o-9ar"/>
-                                <constraint firstItem="FpR-fC-9O1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="QJS-tH-wGr" secondAttribute="leading" constant="8" id="Enq-Jd-dtT"/>
-                                <constraint firstAttribute="trailing" secondItem="aOn-wo-Tz1" secondAttribute="trailing" constant="8" id="Hh4-tO-jqT"/>
-                                <constraint firstItem="3YV-Ti-dGL" firstAttribute="leading" secondItem="FpR-fC-9O1" secondAttribute="trailing" constant="8" id="KoB-P7-BKC"/>
-                                <constraint firstItem="FpR-fC-9O1" firstAttribute="top" secondItem="QJS-tH-wGr" secondAttribute="top" constant="6" id="bwD-9w-6x2"/>
-                                <constraint firstAttribute="bottom" secondItem="3YV-Ti-dGL" secondAttribute="bottom" id="eC5-OR-Icu"/>
-                                <constraint firstItem="3YV-Ti-dGL" firstAttribute="top" secondItem="QJS-tH-wGr" secondAttribute="top" id="eGK-oc-ndt"/>
-                            </constraints>
-                        </view>
+                        </stackView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GroupsCell" id="U8L-1l-igg" customClass="GroupsTableViewCell" customModule="iosui" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="414" height="43.5"/>
@@ -290,9 +256,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="oq9-mg-YI2"/>
                     <connections>
-                        <outlet property="clearSearchButton" destination="aOn-wo-Tz1" id="F1Q-SL-SjU"/>
                         <outlet property="searchView" destination="3YV-Ti-dGL" id="0eQ-Ia-wfe"/>
-                        <outlet property="searchViewWidth" destination="Foq-vf-kTa" id="5yb-uP-xm2"/>
                         <outlet property="tableGroups" destination="s6f-Hj-neM" id="pCE-ne-0H2"/>
                     </connections>
                 </tableViewController>
@@ -505,8 +469,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="clear" catalog="system" width="128" height="114"/>
-        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="multiply.circle.fill" catalog="system" width="128" height="121"/>
         <image name="newspaper.fill" catalog="system" width="128" height="111"/>
         <image name="person.2.circle" catalog="system" width="128" height="121"/>

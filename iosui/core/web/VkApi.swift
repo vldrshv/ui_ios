@@ -15,7 +15,7 @@ class VkApi : VkApiProtocol {
         guard let url = getUrl(method: .getUsers, userId: userId) else { return }
 
         makeRequest(with: url) {
-            json in self.log(tag: "getUsersFor", message: json)
+            json in self.log(tag: "response getUsersFor", message: json)
         }
     }
     
@@ -23,7 +23,7 @@ class VkApi : VkApiProtocol {
         guard let url = getUrl(method: .getGroups, userId: userId) else { return }
         
         makeRequest(with: url) {
-            json in self.log(tag: "getGroupsFor", message: json)
+            json in self.log(tag: "response getGroupsFor", message: json)
         }
     }
     
@@ -31,7 +31,15 @@ class VkApi : VkApiProtocol {
         guard let url = getUrl(method: .getPhotos, userId: userId) else { return }
         
         makeRequest(with: url) {
-            json in self.log(tag: "getPhotosFor", message: json)
+            json in self.log(tag: "response getPhotosFor", message: json)
+        }
+    }
+    
+    func searchGroups(text: String) {
+        guard let url = getUrlWithParams(method: .searchGroups, userId: nil, params: text) else { return }
+        
+        makeRequest(with: url) {
+            json in self.log(tag: "response searchGroups", message: json)
         }
     }
     
@@ -48,6 +56,20 @@ class VkApi : VkApiProtocol {
             return URL(string: RequestFactory.getUsers(userId: id, token: token))
         case .getPhotos:
             return URL(string: RequestFactory.getPhotos(userId: id, token: token))
+        default:
+            return nil
+        }
+    }
+    
+    private func getUrlWithParams(method: VkRequests, userId: String?, params: String) -> URL? {
+        let id = (userId == nil ? session.getUserId() : userId) as! String
+        let token = session.getToken()
+        let appId = session.getAppId()
+        switch method {
+        case .searchGroups:
+            return URL(string: RequestFactory.searchGroups(toSearch: params, token: token))
+        default:
+            return getUrl(method: method, userId: userId)
         }
     }
     
@@ -142,6 +164,7 @@ class RequestFactory {
     static func searchGroups(toSearch: String, token: String) -> String {
         return baseUrl + "groups.search?" +
             "q=\(toSearch)&" +
+            "count=3&" +
             "&access_token=\(token)&v=\(version)"
     }
 }

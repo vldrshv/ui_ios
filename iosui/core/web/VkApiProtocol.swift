@@ -17,5 +17,5 @@ protocol VkApiProtocol {
 }
 
 enum VkRequests {
-    case auth, getUsers, getGroups, getPhotos
+    case auth, getUsers, getGroups, getPhotos, searchGroups
 }

@@ -11,26 +11,20 @@ class GroupsTableViewController: UITableViewController, DataChangeListener {
 
     @IBOutlet var tableGroups: UITableView!
     @IBOutlet weak var searchView: UIStackView!
-    @IBOutlet weak var clearSearchButton: UIButton!
-    @IBOutlet weak var searchViewWidth: NSLayoutConstraint!
+    private let searchController = UISearchController(searchResultsController: nil)
     
-    @IBAction func searchGroups(_ sender: Any) {
-        setSearchWidth(1)
-//        let sb = UIStoryboard(name: "BottomTabs", bundle: nil)
-//        let vc = sb.instantiateViewController(withIdentifier: "AddGroupsController") as! GroupItemTableViewController
-//
-//        vc.setDataChangeListener(listener: self)
-//
-//        self.present(vc, animated: true, completion: nil)
-    }
+    private let api = VkApi()
+    private var timer: Timer?
+    
+    private var searchText = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableGroups.register(UINib(nibName: "GroupsTableViewCell", bundle: nil), forCellReuseIdentifier: "GroupsCell")
         
-        let api = VkApi()
+        initSearch()
+        
         api.getGroupsFor(userId: nil)
-        setSearchWidth()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,25 +38,6 @@ class GroupsTableViewController: UITableViewController, DataChangeListener {
         }
         UINavigationUtils.manageNavigationVisibility(navController: navController, appBarHidden: false, navigationBarHidden: true)
         
-    }
-    
-    private func setSearchWidth(_ width: CGFloat? = nil) {
-        UIView.animate(
-            withDuration: 0.1,
-                animations: {
-                    if width == nil {
-                        self.searchView.transform = CGAffineTransform(scaleX: 1.0, y: 0.0)
-                    } else {
-                        self.searchView.transform = CGAffineTransform.identity
-                    }
-                },
-                completion: { _ in
-                    print()
-//                    doOnComplete?()
-//                    UIView.animate(withDuration: 0.6) {
-//                        v.transform = CGAffineTransform.identity
-//                    }
-                })
     }
     
     // MARK: - Table view data source
@@ -100,6 +75,37 @@ class GroupsTableViewController: UITableViewController, DataChangeListener {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableGroups.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+extension GroupsTableViewController : UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else {
+            return
+        }
+        timer?.invalidate()  // Cancel any previous timer
+
+        if (text.count >= 3) {
+            searchText = text
+            // …schedule a timer for 0.5 seconds
+            timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(performSearch), userInfo: nil, repeats: false)
+        }
+    }
+    
+    private func initSearch() {
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchView.addSubview(searchController.searchBar)
+        
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        definesPresentationContext = true
+    }
+    
+    @objc func performSearch() {
+        print(searchText)
+        if (searchText.count > 0) {
+            api.searchGroups(text: searchText)
+        }
     }
 }
 
