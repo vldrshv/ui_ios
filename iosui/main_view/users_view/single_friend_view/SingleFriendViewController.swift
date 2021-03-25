@@ -48,6 +48,9 @@ class SingleFriendViewController: UIViewController {
             forCellWithReuseIdentifier: cell_reuse_id
         )
         
+        let api = VkApi()
+        api.getPhotosFor(userId: nil)
+        
         
     }
         

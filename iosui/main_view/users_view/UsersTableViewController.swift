@@ -22,6 +22,9 @@ class UsersTableViewController: UIViewController {
         usersTable.alwaysBounceVertical = false
         usersTable.register(UINib(nibName: "UserTableViewCell", bundle: nil), forCellReuseIdentifier: "UserCell")
         usersTable.register(UINib(nibName: "UILabledTableHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: "LabledTableHeader")
+        
+        let api = VkApi()
+        api.getUsersFor(userId: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -10,19 +10,27 @@ import UIKit
 class GroupsTableViewController: UITableViewController, DataChangeListener {
 
     @IBOutlet var tableGroups: UITableView!
+    @IBOutlet weak var searchView: UIStackView!
+    @IBOutlet weak var clearSearchButton: UIButton!
+    @IBOutlet weak var searchViewWidth: NSLayoutConstraint!
     
-    @IBAction func addGroups(_ sender: Any) {
-        let sb = UIStoryboard(name: "BottomTabs", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: "AddGroupsController") as! GroupItemTableViewController
-        
-        vc.setDataChangeListener(listener: self)
-        
-        self.present(vc, animated: true, completion: nil)
+    @IBAction func searchGroups(_ sender: Any) {
+        setSearchWidth(1)
+//        let sb = UIStoryboard(name: "BottomTabs", bundle: nil)
+//        let vc = sb.instantiateViewController(withIdentifier: "AddGroupsController") as! GroupItemTableViewController
+//
+//        vc.setDataChangeListener(listener: self)
+//
+//        self.present(vc, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableGroups.register(UINib(nibName: "GroupsTableViewCell", bundle: nil), forCellReuseIdentifier: "GroupsCell")
+        
+        let api = VkApi()
+        api.getGroupsFor(userId: nil)
+        setSearchWidth()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,8 +42,27 @@ class GroupsTableViewController: UITableViewController, DataChangeListener {
         guard let navController = self.navigationController else {
             return
         }
-        UINavigationUtils.manageNavigationVisibility(navController: navController, appBarHidden: false, navigationBarHidden: false)
+        UINavigationUtils.manageNavigationVisibility(navController: navController, appBarHidden: false, navigationBarHidden: true)
         
+    }
+    
+    private func setSearchWidth(_ width: CGFloat? = nil) {
+        UIView.animate(
+            withDuration: 0.1,
+                animations: {
+                    if width == nil {
+                        self.searchView.transform = CGAffineTransform(scaleX: 1.0, y: 0.0)
+                    } else {
+                        self.searchView.transform = CGAffineTransform.identity
+                    }
+                },
+                completion: { _ in
+                    print()
+//                    doOnComplete?()
+//                    UIView.animate(withDuration: 0.6) {
+//                        v.transform = CGAffineTransform.identity
+//                    }
+                })
     }
     
     // MARK: - Table view data source
@@ -62,7 +89,7 @@ class GroupsTableViewController: UITableViewController, DataChangeListener {
 
         return cell
     }
-    
+        
     private func manageCell(_ cell: GroupsTableViewCell, group: IGroup) {
         cell.setGroup(group: group) {
             group.doAction()
