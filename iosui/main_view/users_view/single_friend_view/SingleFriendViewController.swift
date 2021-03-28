@@ -9,15 +9,6 @@ import UIKit
 
 class SingleFriendViewController: UIViewController {
     private let transitionDelegate = TransitionDelegate()
-    
-
-    var userName: String = "" {
-        didSet {
-            user = UsersProvider.getUserBy(name: userName)
-        }
-    }
-    private var user: IUser = VkUser.empty()
-    
     private let cell_reuse_id = "PhotoCollectionViewCell"
     private let header_cell_reusable_id = "SingleFriendColectionHeaderCell"
     
@@ -26,6 +17,9 @@ class SingleFriendViewController: UIViewController {
     
     private var cellSize: CGSize = .zero
     private var scrollOffset = 0
+    
+    private let provider = PhotoProvider()
+    var user: IUser = VkUser.empty()
     
     private var presentationStyle = CollectionPresentation.column2 {
         didSet {
@@ -47,11 +41,6 @@ class SingleFriendViewController: UIViewController {
             UINib(nibName: "PhotoCollectionViewCell", bundle: nil),
             forCellWithReuseIdentifier: cell_reuse_id
         )
-        
-        let api = VkApi()
-        api.getPhotosFor(userId: nil)
-        
-        
     }
         
     override func viewWillAppear(_ animated: Bool) {
@@ -60,20 +49,23 @@ class SingleFriendViewController: UIViewController {
         guard let navController = self.navigationController else { return }
         UINavigationUtils.manageNavigationVisibility(navController: navController, appBarHidden: true, navigationBarHidden: false)
         
-        let photoCnt = user.getPhotoCount()
-        if photoCnt < 2 {
-            presentationStyle = .column1
-            navigationItem.rightBarButtonItem = nil
-            return
-        }
-        
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: presentationStyle.buttonImage, style: .plain, target: self, action: #selector(changeContentLayout))
+        
+        provider.getData(userId: user.getId()) {
+            let photoCnt = self.provider.getPhotoCount()
+            if photoCnt < 2 {
+                self.presentationStyle = .column1
+                self.navigationItem.rightBarButtonItem = nil
+                return
+            }
+            self.userPhotosCollection.reloadData()
+        }
     }
 }
 
 extension SingleFriendViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return user.getPhotoCount()
+        return provider.getPhotoCount()
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -84,7 +76,11 @@ extension SingleFriendViewController : UICollectionViewDataSource {
             fatalError("cannot convert to 'PhotoCollectionViewCell'")
         }
         
-        let photoPath = user.getPhotoPathAt(index: indexPath.item)
+        var photoPath = ""
+        switch presentationStyle {
+        case .column3: photoPath = provider.getMedium(index: indexPath)
+        default: photoPath = provider.getLarge(index: indexPath)
+        }
         
         cell.setPhoto(path: photoPath)
         cell.setWidth(width: cellSize.width)
@@ -103,7 +99,7 @@ extension SingleFriendViewController : UICollectionViewDataSource {
             for: indexPath
         ) as? SingleFriendColectionHeaderCell else { return UICollectionReusableView() }
                 
-        header.setUser(userName: userName, photoPath: user.getAvatarPath())
+        header.setUser(userName: user.getName(), photoPath: user.getAvatarPath())
         
         return header
     }

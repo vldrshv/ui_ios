@@ -264,38 +264,6 @@
             </objects>
             <point key="canvasLocation" x="1300" y="-228.34821428571428"/>
         </scene>
-        <!--Group Item Table View Controller-->
-        <scene sceneID="XWp-Bv-xA7">
-            <objects>
-                <tableViewController storyboardIdentifier="AddGroupsController" id="eXe-hU-gdh" customClass="GroupItemTableViewController" customModule="iosui" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Mzz-4X-YiM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="DzS-Qv-Mhz">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DzS-Qv-Mhz" id="2Xw-as-nHd">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="eXe-hU-gdh" id="fXA-Kv-kkm"/>
-                            <outlet property="delegate" destination="eXe-hU-gdh" id="gtc-qt-ueh"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="qjk-Us-abl"/>
-                    <connections>
-                        <outlet property="tableGroups" destination="Mzz-4X-YiM" id="YJw-jZ-Fr1"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="liC-Pm-LZB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2135" y="-229"/>
-        </scene>
         <!--Groups-->
         <scene sceneID="pdf-4D-ccU">
             <objects>

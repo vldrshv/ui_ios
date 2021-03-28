@@ -13,7 +13,7 @@ class GroupsTableViewController: UITableViewController, DataChangeListener {
     @IBOutlet weak var searchView: UIStackView!
     private let searchController = UISearchController(searchResultsController: nil)
     
-    private let api = VkApi()
+    private let provider = GroupsProvider()
     private var timer: Timer?
     
     private var searchText = ""
@@ -23,13 +23,13 @@ class GroupsTableViewController: UITableViewController, DataChangeListener {
         tableGroups.register(UINib(nibName: "GroupsTableViewCell", bundle: nil), forCellReuseIdentifier: "GroupsCell")
         
         initSearch()
-        
-        api.getGroupsFor(userId: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         manageAppBar()
+        
+        provider.getData(userId: nil) { self.tableGroups.reloadData() }
     }
     
     private func manageAppBar() {
@@ -52,7 +52,7 @@ class GroupsTableViewController: UITableViewController, DataChangeListener {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return GroupsProvider.subscribedCount()
+        return provider.getGroupsCount()
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -60,7 +60,7 @@ class GroupsTableViewController: UITableViewController, DataChangeListener {
             fatalError("The dequeued cell is not an instance of MealTableViewCell.")
         }
         
-        manageCell(cell, group: GroupsProvider.getGroupFromSubscribed(at: indexPath))
+        manageCell(cell, group: provider.getGroup(at: indexPath))
 
         return cell
     }
@@ -85,11 +85,10 @@ extension GroupsTableViewController : UISearchResultsUpdating {
         }
         timer?.invalidate()  // Cancel any previous timer
 
-        if (text.count >= 3) {
-            searchText = text
-            // …schedule a timer for 0.5 seconds
-            timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(performSearch), userInfo: nil, repeats: false)
-        }
+        
+        searchText = text
+        // …schedule a timer for 0.5 seconds
+        timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(performSearch), userInfo: nil, repeats: false)
     }
     
     private func initSearch() {
@@ -103,8 +102,7 @@ extension GroupsTableViewController : UISearchResultsUpdating {
     
     @objc func performSearch() {
         print(searchText)
-        if (searchText.count > 0) {
-            api.searchGroups(text: searchText)
+        provider.searchGroups(text: searchText) { self.tableGroups.reloadData()
         }
     }
 }

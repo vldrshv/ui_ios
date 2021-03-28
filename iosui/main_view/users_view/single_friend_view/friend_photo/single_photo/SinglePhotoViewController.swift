@@ -15,19 +15,11 @@ class SinglePhotoViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    
-    
     private var cellSize: CGSize = .zero
     
-    var user: IUser = VkUser.empty() {
-        didSet {
-            let cnt = user.getPhotoCount()
-            for i in 0..<cnt {
-                print(user.getPhotoPathAt(index: i))
-            }
-        }
-    }
+    var user: IUser = VkUser.empty()
     var index: IndexPath = IndexPath()
+    private let provider = PhotoProvider()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,8 +34,12 @@ class SinglePhotoViewController: UIViewController {
         UINavigationUtils.manageNavigationVisibility(navController: navController, appBarHidden: true, navigationBarHidden: true)
     }
     
-    override func viewDidLayoutSubviews() {
-        photoCollectionView.scrollToItem(at: index, at: .centeredHorizontally, animated: false)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        provider.getData(userId: user.getId()) {
+            self.photoCollectionView.reloadData()
+            self.photoCollectionView.scrollToItem(at: self.index, at: .centeredHorizontally, animated: false)
+        }
     }
 }
 
@@ -55,7 +51,7 @@ extension SinglePhotoViewController : UICollectionViewDataSource {
 
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return user.getPhotoCount()
+        return provider.getPhotoCount()
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -63,7 +59,7 @@ extension SinglePhotoViewController : UICollectionViewDataSource {
             fatalError("cannot convert to 'PhotoCollectionViewCell'")
         }
     
-        let photoPath = user.getPhotoPathAt(index: indexPath.item)
+        let photoPath = provider.getHD(index: indexPath)
         
         cell.setPhoto(path: photoPath)
         cell.setWidth(width: cellSize.width)

@@ -22,11 +22,16 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     }
     
     func setPhoto(path: String) {
-        guard let image = UIImage(named: path) else {
-            return
+        guard let url = URL(string: path) else { return }
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.photoView.image = image
+                    }
+                }
+            }
         }
-        
-        self.photoView.image = image
     }
     
     func getPhoto() -> UIImageView {

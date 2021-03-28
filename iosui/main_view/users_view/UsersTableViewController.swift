@@ -16,15 +16,14 @@ class UsersTableViewController: UIViewController {
     
     @IBOutlet weak var searchView: UIStackView!
     
+    private let provider = UsersProvider()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         usersTable.alwaysBounceVertical = false
         usersTable.register(UINib(nibName: "UserTableViewCell", bundle: nil), forCellReuseIdentifier: "UserCell")
         usersTable.register(UINib(nibName: "UILabledTableHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: "LabledTableHeader")
-        
-        let api = VkApi()
-        api.getUsersFor(userId: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,6 +38,8 @@ class UsersTableViewController: UIViewController {
         containerView.safeAreaInsetsDidChange()
         
         initSearch()
+        
+        provider.getData(userId: nil) { self.usersTable.reloadData() }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -50,10 +51,8 @@ class UsersTableViewController: UIViewController {
         guard let vc = segue.destination as? SingleFriendViewController else { return }
         guard let indexPath = usersTable.indexPathForSelectedRow else { return }
         
-        let user = UsersProvider.getAtSection(index: indexPath)
-        vc.userName = user.getName()
-        
-        
+        let user = provider.getAtSection(index: indexPath)
+        vc.user = user
     }
 }
     // MARK: - Table view data source
@@ -63,18 +62,18 @@ extension UsersTableViewController : UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         
-        return UsersProvider.getSectionsCount()
+        return provider.getSectionsCount()
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return UsersProvider.getUsersInSectionCount(section: section)
+        return provider.getUsersInSectionCount(section: section)
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserTableViewCell
         
-        let user = UsersProvider.getAtSection(index: indexPath)
+        let user = provider.getAtSection(index: indexPath)
         
         cell.setUser(user: user)
         cell.makeRounded()
@@ -86,7 +85,7 @@ extension UsersTableViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "LabledTableHeader") as! LabledTableHeader
         
-        header.setText(text: UsersProvider.getSectionNameAt(section: section))
+        header.setText(text: provider.getSectionNameAt(section: section))
         header.setTintColor(color: tableView.backgroundColor, alfa: 0.5)
         header.setTextColor(color: UIColor.lightGray)
         
@@ -112,7 +111,7 @@ extension UsersTableViewController : UISearchResultsUpdating {
         }
         print(searchText)
         
-        UsersProvider.makeSearch(withText: searchText)
+        provider.makeSearch(withText: searchText)
         usersTable.reloadData()
     }
     

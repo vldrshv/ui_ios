@@ -19,7 +19,7 @@ class LoginViewController: UIViewController {
     private let api: VkApiProtocol = VkApi()
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let url = api.getUrl(method: .auth, userId: nil) else { return }
+        guard let url = URL(string: api.getUrl(method: .auth, userId: nil)) else { return }
         webView.load(URLRequest(url: url))
     }
     

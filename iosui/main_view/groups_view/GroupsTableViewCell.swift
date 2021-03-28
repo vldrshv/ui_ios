@@ -28,7 +28,7 @@ class GroupsTableViewCell: UITableViewCell {
     
     func setGroup(group: IGroup, onSibscribeClickedListener: @escaping () -> Void) {
         self.groupNameLabel.text = group.getName()
-        self.groupImage.image = UIImage(named: group.getImagePath())
+        setImage(path: group.getImagePath())
         
         self.onSibscribeListener = onSibscribeClickedListener
         var title = "subscribe"
@@ -62,6 +62,19 @@ class GroupsTableViewCell: UITableViewCell {
             layer.backgroundColor = ColorUtils.black.cgColor
             subcsribeButton.setTitleColor(ColorUtils.white, for: .normal)
             layer.borderColor = ColorUtils.white.cgColor
+        }
+    }
+    
+    private func setImage(path: String) {
+        guard let url = URL(string: path) else { return }
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.groupImage.image = image
+                    }
+                }
+            }
         }
     }
 }

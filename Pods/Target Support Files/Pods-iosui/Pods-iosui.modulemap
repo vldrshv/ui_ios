@@ -1,0 +1,6 @@
+framework module Pods_iosui {
+  umbrella header "Pods-iosui-umbrella.h"
+
+  export *
+  module * { export * }
+}

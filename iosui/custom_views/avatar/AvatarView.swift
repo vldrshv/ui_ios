@@ -57,12 +57,18 @@ class AvatarView: BaseView {
     func setSize(_ size: CGFloat) {
         self.constraintsSize = size
     }
-    
+
     func setImage(path: String) {
-        if path == "" { return }
-        self.avatarImage.image = UIImage(named: path)
-        
-        containerView.setNeedsDisplay()
+        guard let url = URL(string: path) else { return }
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.avatarImage.image = image
+                    }
+                }
+            }
+        }
     }
     
     override init(frame: CGRect) {
