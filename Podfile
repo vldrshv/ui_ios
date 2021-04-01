@@ -7,10 +7,10 @@ target 'iosui' do
 
   # Pods for iosui
   
-  pod 'Alamofire', '~> 5.2'
   pod 'RxSwift', '6.1.0'
   pod 'RxCocoa', '6.1.0'
   pod 'RxAlamofire'
+  pod 'RxRealm'
 
   target 'iosuiTests' do
     inherit! :search_paths

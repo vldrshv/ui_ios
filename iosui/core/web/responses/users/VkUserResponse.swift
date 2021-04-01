@@ -6,20 +6,20 @@
 //
 
 import Foundation
+import RealmSwift
 
-
-struct VkUserResponse : Codable {
-    let id: Int
-    let firstName: String
-    let lastName: String
-    let lastSeen: VkUserOnlineStatus?
-    let online: Int
-    let photo50: String
+class VkUserResponse : TableEntity, Codable {
+    @objc dynamic var id: Int = -1
+    @objc dynamic var firstName: String = ""
+    @objc dynamic var lastName: String = ""
+    @objc dynamic var lastSeen: VkUserOnlineStatus = VkUserOnlineStatus()
+    @objc dynamic var online: Int = -1
+    @objc dynamic var photo50: String = ""
 }
 
-struct VkUserOnlineStatus : Codable {
-    let platform: Int?
-    let time: CLong?
+class VkUserOnlineStatus : Object, Codable {
+    @objc dynamic var platform: Int = -1
+    @objc dynamic var time: CLong = -1
 }
 
 // MARK: DATA EXAMPLE

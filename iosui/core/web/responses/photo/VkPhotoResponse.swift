@@ -6,19 +6,20 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct VkPhotoResponse : Codable {
-    let albumId: Int?
-    let date: CLong?
-    let id: Int?
-    let sizes: [VkPhotoResponseSizes]?
+class VkPhotoResponse : TableEntity, Codable {
+    @objc dynamic var albumId: Int = -1
+    @objc dynamic var date: CLong = -1
+    @objc dynamic var id: Int = -1
+    @objc dynamic var sizes: [VkPhotoResponseSizes] = []
 }
 
-struct VkPhotoResponseSizes : Codable {
-    let height: Int?
-    let url: String?
-    let type: String?
-    let width: Int?
+class VkPhotoResponseSizes : Object, Codable {
+    @objc dynamic var url: String = ""
+    @objc dynamic var type: String = ""
+    @objc dynamic var width: Int = -1
+    @objc dynamic var height: Int = -1
 }
 
 //{

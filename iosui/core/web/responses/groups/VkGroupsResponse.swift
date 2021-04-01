@@ -8,11 +8,11 @@
 import Foundation
 
 
-struct VkGroupsResponse : Codable {
-    let id: Int?
-    let isMember: Int?
-    let name: String?
-    let photo50: String?
+class VkGroupsResponse : TableEntity, Codable {
+    @objc dynamic var id: Int = -1
+    @objc dynamic var isMember: Int = -1
+    @objc dynamic var name: String = ""
+    @objc dynamic var photo50: String = ""
 }
 
 
