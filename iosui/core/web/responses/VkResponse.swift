@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct VkResponse<T : Codable> : Codable {
+struct VkResponse<T : Decodable> : Decodable {
     private let response: Response<T>?
     
     init() {
         self.response = nil
     }
     
-    private struct Response<T : Codable> : Codable {
+    private struct Response<T : Decodable> : Decodable {
         let count: Int
         let items: [T]?
     }

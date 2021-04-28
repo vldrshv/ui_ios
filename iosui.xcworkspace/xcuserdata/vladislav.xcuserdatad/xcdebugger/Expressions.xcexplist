@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "TableProviderImpl.get(filter:):DBImpl.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in TableProviderImpl.get(filter:):DBImpl.swift">
+      </ContextState>
+      <ContextState
+         contextName = "UsersTableViewController.prepare(for:sender:):UsersTableViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "PhotoProvider.getDataLocally(userId:onSuccess:):PhotoProvider.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "photos">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in PhotoProvider.getDataLocally(userId:onSuccess:):PhotoProvider.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #2 in PhotoProvider.getDataRemote(userId:onSuccess:):PhotoProvider.swift">
+      </ContextState>
+      <ContextState
+         contextName = "TableProviderImpl.insert(values:):DBImpl.swift">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

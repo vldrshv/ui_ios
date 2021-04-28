@@ -8,16 +8,16 @@
 import Foundation
 import RealmSwift
 
-class VkUserResponse : TableEntity, Codable {
+class VkUserResponse : Object, Decodable {
     @objc dynamic var id: Int = -1
     @objc dynamic var firstName: String = ""
     @objc dynamic var lastName: String = ""
-    @objc dynamic var lastSeen: VkUserOnlineStatus = VkUserOnlineStatus()
+    @objc dynamic var lastSeen: VkUserOnlineStatus? = VkUserOnlineStatus()
     @objc dynamic var online: Int = -1
     @objc dynamic var photo50: String = ""
 }
 
-class VkUserOnlineStatus : Object, Codable {
+class VkUserOnlineStatus : Object, Decodable {
     @objc dynamic var platform: Int = -1
     @objc dynamic var time: CLong = -1
 }

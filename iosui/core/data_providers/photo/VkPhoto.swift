@@ -14,6 +14,15 @@ class VkPhoto : IPhoto {
         self.photo = response
     }
     
+    init(albumId: Int, date: CLong, id: Int = -1, ownerId: CLong = -1, sizes: [VkPhotoResponseSizes]) {
+        self.photo = VkPhotoResponse()
+        self.photo?.albumId = albumId
+        self.photo?.date = date
+        self.photo?.id = id
+        self.photo?.ownerId = ownerId
+        self.photo?.sizes = sizes
+    }
+    
     func getAlbumId() -> Int {
         return self.photo?.albumId ?? -1
     }
@@ -29,6 +38,9 @@ class VkPhoto : IPhoto {
         let res = sizes.filter { $0.type == typeName }
         return res.count == 0 ? "" : (res[0].url ?? "")
     }
+    func getPhotoResponse() -> VkPhotoResponse? {
+        return photo
+    }
 }
 
 protocol IPhoto {
@@ -36,6 +48,7 @@ protocol IPhoto {
     func getDate() -> CLong
     func getId() -> Int
     func getPhotoUrlBy(type: VkPhotoType) -> String
+    func getPhotoResponse() -> VkPhotoResponse?
 }
 
 enum VkPhotoType {

@@ -6,9 +6,9 @@
 //
 
 import Foundation
+import RealmSwift
 
-
-class VkGroupsResponse : TableEntity, Codable {
+class VkGroupsResponse : Object, Codable {
     @objc dynamic var id: Int = -1
     @objc dynamic var isMember: Int = -1
     @objc dynamic var name: String = ""

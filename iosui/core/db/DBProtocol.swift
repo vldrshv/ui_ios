@@ -7,19 +7,17 @@
 
 import Foundation
 import RealmSwift
-
-protocol DBProtocol {
-    func getProvider(type: DBTable) -> TableProvider
-}
+import RxSwift
 
 protocol TableProvider {
-    func getAll() -> TableEntity?
-    func insert(value: TableEntity)
-    func insert(values: [TableEntity])
-    func get() -> TableEntity?
+    associatedtype T : Object
+    func getAll() -> Results<T>
+    func insert(value: T)
+    func insert(values: [T])
+    func get(filter: String) -> Results<T>
+    
+    func clear()
 }
-
-class TableEntity : Object { }
 
 enum DBTable {
     case users, group, photo

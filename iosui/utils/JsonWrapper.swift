@@ -9,7 +9,7 @@ import Foundation
 
 class JsonWrapper {
     
-    static func getVkResponce <T : Codable> (data: Data) -> VkResponse<T> {
+    static func getVkResponce <T : Decodable> (data: Data) -> VkResponse<T> {
         do {
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
